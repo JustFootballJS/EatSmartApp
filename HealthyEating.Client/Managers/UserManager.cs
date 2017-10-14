@@ -62,6 +62,12 @@ namespace HealthyEating.Client.Managers
             }
         }
 
+        public string Logout()
+        {
+            this.LoggedUser = null;
+            return "Log out successful";
+        }
+
         public string RecoverAccount(string username, string password, string answer)
         {
             Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
@@ -88,6 +94,21 @@ namespace HealthyEating.Client.Managers
                 throw new Exception("You cannot proceed without agreeing");
             }
            
+        }
+
+        public string DeleteAccount(string answer)
+        {
+            if (answer == "yes" || answer == "y")
+            {
+                this.LoggedUser.IsDeleted = true;
+                this.LoggedUser = null;
+
+                return "Your account has been deleted";
+            }
+            else
+            {
+                return "Your account has not been deleted";
+            }
         }
 
         public string UserAsString(IDatabase database, string username)

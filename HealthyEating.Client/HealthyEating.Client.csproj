@@ -69,6 +69,7 @@
     <Compile Include="Core\Commands\Command.cs" />
     <Compile Include="Core\Commands\CreateRecipeCommand.cs" />
     <Compile Include="Core\Commands\ListRecipesCommand.cs" />
+    <Compile Include="Core\Commands\UserCommand\LogoutCommand.cs" />
     <Compile Include="Core\Contracts\ICommand.cs" />
     <Compile Include="Core\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Contracts\ICommandParser.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Core\Providers\CommandProcessor.cs" />
     <Compile Include="Core\Providers\JsonProvider.cs" />
     <Compile Include="Core\Providers\PasswordHasher.cs" />
+    <Compile Include="Core\Providers\PDFWriter.cs" />
     <Compile Include="Core\Providers\Reader.cs" />
     <Compile Include="Core\Providers\Writer.cs" />
     <Compile Include="Core\Providers\XMLProvider.cs" />

@@ -5,7 +5,7 @@ namespace HealthyEating.Client.Core.Contracts
 {
     public interface IUserManager
     {
-        string UserAsString(IDatabase database,string username);
+        string UserAsString(IDatabase database, string username);
 
         User LoggedUser { get; set; }
 
@@ -13,6 +13,10 @@ namespace HealthyEating.Client.Core.Contracts
 
         string LogIn(string username, string passwerd);
 
-         string SignUp(string username, string password);
+        string SignUp(string username, string password);
+
+        string DeleteAccount(string answer);
+
+        string Logout();
     }
 }
