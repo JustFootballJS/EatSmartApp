@@ -34,6 +34,7 @@ namespace HealthyEating.Client.Managers
             {
                 throw new ArgumentException("Username has been already taken");
             }
+
             var hashedPassword = this.passwordHasher.Hash(password);
 
             var user = modelFactory.CreateUser(username, hashedPassword);

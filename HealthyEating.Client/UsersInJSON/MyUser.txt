@@ -1,0 +1,10 @@
+{
+	"Id": 1,
+	"Username": "Pesho",
+	"Password": "Gosho",
+	"Recipes": [],
+	"CurrentWeight": 20.5,
+	"Goals": [],
+	"Logs": [],
+	"IsDeleted": true
+}

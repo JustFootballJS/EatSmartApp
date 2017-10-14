@@ -44,6 +44,12 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.3.1.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.1\lib\net45\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -67,20 +73,24 @@
     <Compile Include="Core\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Contracts\ICommandParser.cs" />
     <Compile Include="Core\Contracts\ICommandProcessor.cs" />
+    <Compile Include="Core\Contracts\IJsonProvider.cs" />
     <Compile Include="Core\Contracts\IModelFactory.cs" />
     <Compile Include="Core\Contracts\IPasswordHasher.cs" />
     <Compile Include="Core\Contracts\IReader.cs" />
     <Compile Include="Core\Contracts\IUserManager.cs" />
     <Compile Include="Core\Contracts\IWriter.cs" />
+    <Compile Include="Core\Contracts\IXMLProvider.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />
     <Compile Include="Core\Factories\ModelFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\CommandProcessor.cs" />
+    <Compile Include="Core\Providers\JsonProvider.cs" />
     <Compile Include="Core\Providers\PasswordHasher.cs" />
     <Compile Include="Core\Providers\Reader.cs" />
     <Compile Include="Core\Providers\Writer.cs" />
+    <Compile Include="Core\Providers\XMLProvider.cs" />
     <Compile Include="Data\Database.cs" />
     <Compile Include="Data\HealthyEatingContext.cs" />
     <Compile Include="Data\IDatabase.cs" />

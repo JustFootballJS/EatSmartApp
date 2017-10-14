@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <CurrentWeight>20.5</CurrentWeight>
+   <Goals />
+   <Id>1</Id>
+   <IsDeleted>true</IsDeleted>
+   <Logs />
+   <Password>Gosho</Password>
+   <Recipes />
+   <Username>Pesho</Username>
+</root>
