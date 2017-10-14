@@ -3,6 +3,7 @@ using HealthyEating.Client.Data;
 using System;
 using System.Linq;
 using HealthyEating.Client.Models;
+using Bytes2you.Validation;
 
 namespace HealthyEating.Client.Managers
 {
@@ -14,14 +15,25 @@ namespace HealthyEating.Client.Managers
 
         public UserManager(IPasswordHasher passwordHasher, IDatabase database, IModelFactory modelFactory)
         {
+            Guard.WhenArgument(passwordHasher, "passwordHasher").IsNull().Throw();
+            Guard.WhenArgument(database, "database").IsNull().Throw();
+            Guard.WhenArgument(modelFactory, "modelFactory").IsNull().Throw();
+
             this.passwordHasher = passwordHasher;
             this.database = database;
             this.modelFactory = modelFactory;
         }
-        public User LoggedUser { get ; set ; }
+        public User LoggedUser { get; set; }
 
         public string SignUp(string username, string password)
         {
+            Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
+            Guard.WhenArgument(password, "password").IsEmpty().IsNullOrWhiteSpace().Throw();
+
+            if (this.database.Users.SingleOrDefault(x => x.Username == username) != null)
+            {
+                throw new ArgumentException("Username has been already taken");
+            }
             var hashedPassword = this.passwordHasher.Hash(password);
 
             var user = modelFactory.CreateUser(username, hashedPassword);
@@ -32,29 +44,37 @@ namespace HealthyEating.Client.Managers
 
         public string LogIn(string username, string password)
         {
+            Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
+            Guard.WhenArgument(password, "password").IsEmpty().IsNullOrWhiteSpace().Throw();
+
             var user = database.Users.Single(x => x.Username == username);
-            if (passwordHasher.Verify(password, user.Password) && user.IsDeleted == false)
+
+            if (user != null && passwordHasher.Verify(password, user.Password) && user.IsDeleted == false)
             {
                 this.LoggedUser = user;
 
                 return $"Hi, {user.Username}!";
             }
-            else if (user.IsDeleted)
-            {
-                throw new Exception();
-            }
             else
             {
-                throw new Exception();
+                throw new ArgumentException("Wrong username or password");
             }
         }
 
         public string RecoverAccount(string username, string password, string answer)
         {
+            Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
+            Guard.WhenArgument(password, "password").IsEmpty().IsNullOrWhiteSpace().Throw();
+            Guard.WhenArgument(answer, "answer").IsEmpty().IsNullOrWhiteSpace().Throw();
+
             var user = this.database.Users.Single(x => x.Username == username);
-            if (user.IsDeleted == false)
+            if (user == null)
             {
-                throw new Exception();
+                throw new Exception("Wrong username or password");
+            }
+            else if (user.IsDeleted == false)
+            {
+                throw new Exception("Sorry but this account is active");
             }
             else if (this.passwordHasher.Verify(password, user.Password) && (answer == "yes" || answer == "y"))
             {
@@ -62,28 +82,27 @@ namespace HealthyEating.Client.Managers
                 this.LoggedUser = user;
                 return "Account successfully recovered!";
             }
-            else if (answer != "y" && answer != "yes")
+            else 
             {
-                throw new Exception();
+                throw new Exception("You cannot proceed without agreeing");
             }
-            else
-            {
-                throw new Exception();
-            }
+           
         }
 
         public string UserAsString(IDatabase database, string username)
         {
-            var user=database.Users.Single(x => x.Username == username);
+            Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
+
+            var user = database.Users.Single(x => x.Username == username);
             return string.Concat($"Username: {user.Username}",
                 Environment.NewLine,
                 $"Recipes: ",
                 Environment.NewLine,
-                string.Join(Environment.NewLine,user.Recipes),
+                string.Join(Environment.NewLine, user.Recipes),
                 Environment.NewLine,
                 $"Meal History: ",
                 Environment.NewLine,
-                string.Join(Environment.NewLine,user.Logs),
+                string.Join(Environment.NewLine, user.Logs),
                 Environment.NewLine,
                 $"Current weight: {user.CurrentWeight}",
                 Environment.NewLine

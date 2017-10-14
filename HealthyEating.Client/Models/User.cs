@@ -24,5 +24,7 @@ namespace HealthyEating.Client.Models
         public ICollection<string> Goals { get; set; }
 
         public ICollection<string> Logs { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }
