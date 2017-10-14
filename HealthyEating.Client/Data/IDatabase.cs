@@ -9,5 +9,7 @@ namespace HealthyEating.Client.Data
         IList<Ingredient> Ingredients { get; set; }
 
         IList<Recipe> Recipes { get; set; }
+
+        ICollection<User> Users { get; set; }
     }
 }
