@@ -7,9 +7,9 @@ using HealthyEating.Client.Models;
 
 namespace HealthyEating.Client.Data
 {
-    public class Database : IDatabase
+    public class InMemoryDB : IDatabase
     {
-        public Database()
+        public InMemoryDB()
         {
             this.Ingredients = new List<Ingredient>();
             this.Recipes = new List<Recipe>();

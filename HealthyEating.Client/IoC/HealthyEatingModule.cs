@@ -24,7 +24,7 @@ namespace HealthyEating.Client.IoC
             this.Bind<IWriter>().To<Writer>();
             this.Bind<IEngine>().To<Engine>();
 
-            this.Bind<IDatabase>().To<Database>().InSingletonScope();
+            this.Bind<IDatabase>().To<InMemoryDB>().InSingletonScope();
             this.Bind<ICommandFactory>().To<CommandFactory>();
             this.Bind<IModelFactory>().To<ModelFactory>();
             this.Bind<ICommand>().To<CreateRecipeCommand>().Named("createrecipe");
