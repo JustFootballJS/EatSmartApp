@@ -27,11 +27,11 @@ namespace HealthyEating.Client
             //recipe.Name = "Musaka";
             //recipe.Ingredient = "kartofi";
 
-            //using (var context = new HealthyEatingContext())
-            //{
-            //    System.Console.WriteLine(context.Recipes.Count());
-            //}
-          
+            using (var context = new HealthyEatingContext())
+            {
+                System.Console.WriteLine(context.Recipes.Count());
+            }
+
 
         }
     }
