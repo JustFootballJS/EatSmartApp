@@ -116,7 +116,8 @@ namespace HealthyEating.Client.Managers
             Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
 
             var user = database.Users.Single(x => x.Username == username);
-            return string.Concat($"Username: {user.Username}",
+            return string.Concat(
+                $"Username: {user.Username}",
                 Environment.NewLine,
                 $"Recipes: ",
                 Environment.NewLine,

@@ -65,6 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Commands\RecommendCommands\RecommendFullPortionsCommand.cs" />
+    <Compile Include="Core\Commands\RecommendCommands\RecommendNotFullPortionsCommand.cs" />
     <Compile Include="Core\Commands\UserCommand\ChangeCurrentWeightCommand.cs" />
     <Compile Include="Core\Commands\Command.cs" />
     <Compile Include="Core\Commands\CreateRecipeCommand.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Core\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Contracts\ICommandParser.cs" />
     <Compile Include="Core\Contracts\ICommandProcessor.cs" />
+    <Compile Include="Core\Contracts\IFoodRecomender.cs" />
     <Compile Include="Core\Contracts\IJsonProvider.cs" />
     <Compile Include="Core\Contracts\IModelFactory.cs" />
     <Compile Include="Core\Contracts\IPasswordHasher.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="Core\Factories\ModelFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\CommandProcessor.cs" />
+    <Compile Include="Core\Providers\FoodRecommender.cs" />
     <Compile Include="Core\Providers\JsonProvider.cs" />
     <Compile Include="Core\Providers\PasswordHasher.cs" />
     <Compile Include="Core\Providers\PDFWriter.cs" />
