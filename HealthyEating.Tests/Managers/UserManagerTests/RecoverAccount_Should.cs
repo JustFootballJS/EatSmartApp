@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HealthyEating.Tests.Managers.UserManagerTests
 {
-    class RecoverAccount_Should
+    [TestClass]
+    public class RecoverAccount_Should
     {
     }
 }

@@ -48,7 +48,7 @@ namespace HealthyEating.Client.Managers
             Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
             Guard.WhenArgument(password, "password").IsEmpty().IsNullOrWhiteSpace().Throw();
 
-            var user = database.Users.Single(x => x.Username == username);
+            var user = database.Users.SingleOrDefault(x => x.Username == username);
 
             if (user != null && passwordHasher.Verify(password, user.Password) && user.IsDeleted == false)
             {
@@ -74,7 +74,7 @@ namespace HealthyEating.Client.Managers
             Guard.WhenArgument(password, "password").IsEmpty().IsNullOrWhiteSpace().Throw();
             Guard.WhenArgument(answer, "answer").IsEmpty().IsNullOrWhiteSpace().Throw();
 
-            var user = this.database.Users.Single(x => x.Username == username);
+            var user = this.database.Users.SingleOrDefault(x => x.Username == username);
             if (user == null)
             {
                 throw new Exception("Wrong username or password");
