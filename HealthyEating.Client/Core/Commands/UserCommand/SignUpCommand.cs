@@ -6,10 +6,8 @@ using System.Collections.Generic;
 namespace HealthyEating.Client.Core.Commands
 {
     public class SignUp : Command, ICommand
-    {
-        private readonly IDatabase database;
-        private readonly IUserManager userManager;
-        private readonly IPasswordHasher passwordHasher;
+    {        
+        private readonly IUserManager userManager;        
 
         public SignUp( IUserManager userManager, IReader reader, IWriter writer)
             : base(reader, writer)

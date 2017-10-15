@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace HealthyEating.Client.Core.Commands.RecomendCommands
         public RecommendFullPortionsCommand(IReader reader, IWriter writer, IFoodRecomender foodRecomender)
             : base(reader, writer)
         {
+            Guard.WhenArgument(foodRecomender, "foodRecomender").IsNull().Throw();
+
             this.foodRecomender = foodRecomender;
         }
 
