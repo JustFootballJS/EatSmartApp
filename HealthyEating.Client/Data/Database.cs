@@ -13,11 +13,14 @@ namespace HealthyEating.Client.Data
         {
             this.Ingredients = new List<Ingredient>();
             this.Recipes = new List<Recipe>();
+            this.Users = new HashSet<User>();
         }
+
         public IList<Ingredient> Ingredients { get; set; }
         
-
         public IList<Recipe> Recipes { get; set; }
+
+        public ICollection<User> Users { get; set; }
         
     }
 }
