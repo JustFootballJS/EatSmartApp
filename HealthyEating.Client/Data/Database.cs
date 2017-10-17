@@ -14,6 +14,7 @@ namespace HealthyEating.Client.Data
             this.Ingredients = new List<Ingredient>();
             this.Recipes = new List<Recipe>();
             this.Users = new HashSet<User>();
+            this.Meals = new HashSet<Meal>();
         }
 
         public IList<Ingredient> Ingredients { get; set; }
@@ -21,6 +22,8 @@ namespace HealthyEating.Client.Data
         public IList<Recipe> Recipes { get; set; }
 
         public ICollection<User> Users { get; set; }
+
+        public ICollection<Meal> Meals { get; set; }
         
     }
 }

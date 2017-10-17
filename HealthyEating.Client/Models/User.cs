@@ -7,8 +7,8 @@ namespace HealthyEating.Client.Models
         public User()
         {
             this.Recipes = new HashSet<Recipe>();
-            this.Goals = new HashSet<string>();
-            this.Logs = new HashSet<string>();
+            this.Goals = new HashSet<Goal>();
+            this.Meals = new HashSet<Meal>();
         }
 
         public int Id { get; set; }
@@ -21,9 +21,9 @@ namespace HealthyEating.Client.Models
 
         public double CurrentWeight { get; set; }
 
-        public ICollection<string> Goals { get; set; }
+        public ICollection<Goal> Goals { get; set; }
 
-        public ICollection<string> Logs { get; set; }
+        public ICollection<Meal> Meals { get; set; }
 
         public bool IsDeleted { get; set; }
     }

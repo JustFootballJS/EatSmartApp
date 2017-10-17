@@ -11,5 +11,7 @@ namespace HealthyEating.Client.Data
         IList<Recipe> Recipes { get; set; }
 
         ICollection<User> Users { get; set; }
+
+        ICollection<Meal> Meals { get; set; }
     }
 }
