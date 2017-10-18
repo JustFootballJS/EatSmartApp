@@ -10,13 +10,13 @@ namespace HealthyEating.Client.Models
     {
         public Ingredient()
         {
-            this.Recipes = new HashSet<Recipe>();
+            this.Recipes = new HashSet<Quantity>();
         }
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<Recipe> Recipes { get; set; }
+        public virtual ICollection<Quantity> Recipes { get; set; }
 
         public decimal KCAL { get; set; }
 

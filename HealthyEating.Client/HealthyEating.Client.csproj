@@ -125,10 +125,19 @@
     <Compile Include="Migrations\201710181557557_hopefullyfinal.Designer.cs">
       <DependentUpon>201710181557557_hopefullyfinal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710181635432_hope for quantity.cs" />
+    <Compile Include="Migrations\201710181635432_hope for quantity.Designer.cs">
+      <DependentUpon>201710181635432_hope for quantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710181637060_quantity hope 2.cs" />
+    <Compile Include="Migrations\201710181637060_quantity hope 2.Designer.cs">
+      <DependentUpon>201710181637060_quantity hope 2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Meal.cs" />
+    <Compile Include="Models\Quantity.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Core\Commands\UserCommand\RecoverAccountCommand.cs" />
@@ -153,6 +162,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710181557557_hopefullyfinal.resx">
       <DependentUpon>201710181557557_hopefullyfinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710181635432_hope for quantity.resx">
+      <DependentUpon>201710181635432_hope for quantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710181637060_quantity hope 2.resx">
+      <DependentUpon>201710181637060_quantity hope 2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
