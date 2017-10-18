@@ -4,7 +4,7 @@ using HealthyEating.Client.Core;
 using HealthyEating.Client.Core.Providers;
 using HealthyEating.Client.Data;
 using HealthyEating.Client.IoC;
-using HealthyEating.Client.Migrations;
+//using HealthyEating.Client.Migrations;
 using HealthyEating.Client.Models;
 using Ninject;
 using System.Data.Entity;
@@ -21,11 +21,11 @@ namespace HealthyEating.Client
             //var engine = kernel.Get<IEngine>();
             //engine.Run(); 
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthyEatingContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthyEatingContext, Configuration>());
 
             var recipe = new Recipe();
             recipe.Name = "Musaka";
-            recipe.Ingredient = null;
+           
 
             using (var context = new HealthyEatingContext())
             {

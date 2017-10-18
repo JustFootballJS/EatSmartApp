@@ -5,13 +5,11 @@ namespace HealthyEating.Client.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<HealthyEating.Client.Data.HealthyEatingContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<HealthyEating.Client.Data.HealthyEatingContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            AutomaticMigrationDataLossAllowed = true;
-            
         }
 
         protected override void Seed(HealthyEating.Client.Data.HealthyEatingContext context)

@@ -16,8 +16,6 @@ namespace HealthyEating.Client.Models
 
         public string Name { get; set; }
 
-        //public int? RecipeID { get; set; }
-
         public virtual ICollection<Recipe> Recipes { get; set; }
 
         public decimal KCAL { get; set; }

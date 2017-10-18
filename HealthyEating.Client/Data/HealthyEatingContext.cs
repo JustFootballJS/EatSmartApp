@@ -20,5 +20,10 @@ namespace HealthyEating.Client.Data
 
         public virtual IDbSet<Ingredient> Ingredients { get; set; }
 
+        public virtual IDbSet<User> Users { get; set; }
+
+        public virtual IDbSet<Meal> Meals { get; set; }
+
+        public virtual IDbSet<Goal> Goals { get; set; }
     }
 }

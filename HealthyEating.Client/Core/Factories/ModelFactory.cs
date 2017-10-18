@@ -10,7 +10,7 @@ namespace HealthyEating.Client.Core.Factories
     {
         public Recipe CreateRecipe(string name, Ingredient ingredient)
         {
-            return new Recipe() { Name = name, Ingredient = ingredient };
+            return new Recipe() { Name = name };
         }
 
         public User CreateUser(string username, string password)

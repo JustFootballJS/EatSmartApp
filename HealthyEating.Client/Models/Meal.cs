@@ -15,14 +15,13 @@ namespace HealthyEating.Client.Models
         }
         public int Id { get; set; }
         
-        public MealCategory mealCategory { get; set; }
+        public MealCategory MealCategory { get; set; }
 
         public DateTime Date { get; set; }
 
         public bool isDeleted { get; set; }
 
-
-        public virtual User user { get; set; }
+        public virtual User User { get; set; }
 
         public virtual ICollection<Recipe> Recipes { get; set; }
     }
