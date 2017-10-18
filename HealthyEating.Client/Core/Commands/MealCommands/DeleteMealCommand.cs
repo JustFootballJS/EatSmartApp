@@ -25,14 +25,16 @@ namespace HealthyEating.Client.Core.Commands.MealCommands
             try
             {
                 var idToRemove = int.Parse(commandLine[1]);
-                var mealToRemove = this.user.Meals.Where(m => m.Id == idToRemove);
+                var mealToRemove = this.user.Meals.Where(m => m.Id == idToRemove).Single();
+                mealToRemove.isDeleted = true;
+
                 return $"Meal with ID {idToRemove} was deleted.";
             }
             catch
             {
                 throw new ArgumentException("Enter a meal id to delete!");
             }
-            //this.user.Meals.Remove(mbox => user.Meals)
+            
         }
     }
 }

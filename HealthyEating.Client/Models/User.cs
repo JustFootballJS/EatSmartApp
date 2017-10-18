@@ -21,9 +21,9 @@ namespace HealthyEating.Client.Models
 
         public double CurrentWeight { get; set; }
 
-        public ICollection<Goal> Goals { get; set; }
+        public virtual ICollection<Goal> Goals { get; set; }
 
-        public ICollection<Meal> Meals { get; set; }
+        public virtual ICollection<Meal> Meals { get; set; }
 
         public bool IsDeleted { get; set; }
     }

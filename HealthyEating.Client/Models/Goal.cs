@@ -14,11 +14,14 @@ namespace HealthyEating.Client.Models
         }
 
         public int Id { get; set; }
-
-        public User User { get; set; }
-
+        
         public int MaxKcal { get; set; }
 
         public int WantedWeight { get; set; }
+
+        public bool isDeleted { get; set; }
+
+
+        public virtual User User { get; set; }
     }
 }
