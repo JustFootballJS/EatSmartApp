@@ -1,7 +1,7 @@
 ﻿using HealthyEating.Client.Core;
 using HealthyEating.Client.Core.Commands;
 using HealthyEating.Client.Core.Commands.RecomendCommands;
-using HealthyEating.Client.Core.Commands.UserCommand;
+using HealthyEating.Client.Core.Commands.UserCommands;
 using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Core.Factories;
 using HealthyEating.Client.Core.Providers;

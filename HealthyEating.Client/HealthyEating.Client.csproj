@@ -136,18 +136,6 @@
     <Compile Include="Migrations\201710182005277_quantity is decimal.Designer.cs">
       <DependentUpon>201710182005277_quantity is decimal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710182156012_mealstorecipesfixed.cs" />
-    <Compile Include="Migrations\201710182156012_mealstorecipesfixed.Designer.cs">
-      <DependentUpon>201710182156012_mealstorecipesfixed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710182157475_puttedvirtuals.cs" />
-    <Compile Include="Migrations\201710182157475_puttedvirtuals.Designer.cs">
-      <DependentUpon>201710182157475_puttedvirtuals.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710182206246_fluentapifirst.cs" />
-    <Compile Include="Migrations\201710182206246_fluentapifirst.Designer.cs">
-      <DependentUpon>201710182206246_fluentapifirst.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\Ingredient.cs" />
@@ -186,15 +174,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710182005277_quantity is decimal.resx">
       <DependentUpon>201710182005277_quantity is decimal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710182156012_mealstorecipesfixed.resx">
-      <DependentUpon>201710182156012_mealstorecipesfixed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710182157475_puttedvirtuals.resx">
-      <DependentUpon>201710182157475_puttedvirtuals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710182206246_fluentapifirst.resx">
-      <DependentUpon>201710182206246_fluentapifirst.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
