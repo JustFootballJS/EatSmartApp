@@ -23,6 +23,7 @@ namespace HealthyEating.Client.Managers
             this.database = database;
             this.modelFactory = modelFactory;
         }
+
         public User LoggedUser { get; set; }
 
         public string SignUp(string username, string password)
@@ -39,7 +40,7 @@ namespace HealthyEating.Client.Managers
 
             var user = modelFactory.CreateUser(username, hashedPassword);
             database.Users.Add(user);
-
+            database.SaveChanges();
             return $"User {username} was created successfully";
         }
 
@@ -109,6 +110,14 @@ namespace HealthyEating.Client.Managers
             {
                 return "Your account has not been deleted";
             }
+        }
+
+        public string ChangeCurrentWeight(double newWeight)
+        {
+            this.LoggedUser.CurrentWeight = newWeight;
+            this.database.SaveChanges();
+
+            return "Current weight was changed successfully";
         }
 
         public string UserAsString(IDatabase database, string username)

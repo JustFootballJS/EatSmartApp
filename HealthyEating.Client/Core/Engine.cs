@@ -1,9 +1,5 @@
 ﻿using HealthyEating.Client.Core.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core
 {
@@ -42,7 +38,7 @@ namespace HealthyEating.Client.Core
                         ex = ex.InnerException;
                     }
 
-                    this.writer.Write(string.Format("ERROR: {0}", ex.Message));
+                    this.writer.WriteLine(string.Format("ERROR: {0}", ex.Message));
                 }
             }
         }

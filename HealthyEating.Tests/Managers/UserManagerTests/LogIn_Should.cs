@@ -82,7 +82,7 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var password = "passwordWhichIsContainedInTheDB";
             var usersListMock = new List<User>();
 
-            databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
+            //databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
 
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(()=>userManager.LogIn(username, password), "Wrong username or password");         
@@ -101,8 +101,8 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var usersListMock = new List<User>();
             usersListMock.Add(new User() { Username = username, Password = "passwordDifferentFromOurs" });
 
-            databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
-            passwordHasherMock.Setup(x => x.Verify(password, "passwordDifferentFromOurs")).Returns(false);
+            //databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
+            //passwordHasherMock.Setup(x => x.Verify(password, "passwordDifferentFromOurs")).Returns(false);
 
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(() => userManager.LogIn(username, password), "Wrong username or password");
@@ -121,7 +121,7 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var usersListMock = new List<User>();
             usersListMock.Add(new User() { Username = username, Password = password,IsDeleted=true });
 
-            databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
+            //databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
             passwordHasherMock.Setup(x => x.Verify(password, password)).Returns(true);
 
             //Act & Assert
@@ -141,7 +141,7 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var usersListMock = new List<User>();
             usersListMock.Add(new User() { Username = username, Password = password});
 
-            databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
+            //databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
             passwordHasherMock.Setup(x => x.Verify(password, password)).Returns(true);
 
             //Act 
@@ -165,7 +165,7 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var expected=$"Hi, {username}!";
             usersListMock.Add(new User() { Username = username, Password = password });
 
-            databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
+            //databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
             passwordHasherMock.Setup(x => x.Verify(password, password)).Returns(true);
 
             //Act 

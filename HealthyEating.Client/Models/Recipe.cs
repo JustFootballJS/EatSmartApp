@@ -11,14 +11,18 @@ namespace HealthyEating.Client.Models
         public Recipe()
         {
             this.Quantities = new HashSet<Quantity>();
+
+            this.Meals = new HashSet<Meal>();
         }
 
         public int Id { get; set; }
 
         public string Name { get; set; }
+      
+        public virtual ICollection<Quantity> Quantities {get; set;}
 
-        //public virtual ICollection<Ingredient> Ingredients { get; set; }
-        public ICollection<Quantity> Quantities {get; set;}
+        public virtual ICollection<Meal> Meals { get; set; }
+
         public decimal KCAL { get; set; }
 
         public decimal Protein { get; set; }

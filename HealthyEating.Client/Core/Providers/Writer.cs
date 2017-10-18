@@ -13,5 +13,10 @@ namespace HealthyEating.Client.Core.Providers
         {
             Console.Write(text);
         }
+
+        public void WriteLine(string text)
+        {
+            Console.WriteLine(text);
+        }
     }
 }

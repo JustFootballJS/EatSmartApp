@@ -17,6 +17,8 @@ namespace HealthyEating.Client.Core.Contracts
 
         string DeleteAccount(string answer);
 
+        string ChangeCurrentWeight(double newWeight);
+
         string Logout();
     }
 }

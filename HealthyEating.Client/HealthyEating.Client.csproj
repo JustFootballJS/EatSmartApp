@@ -73,10 +73,10 @@
     <Compile Include="Core\Commands\RecipeCommands\CreateRecipeCommand.cs" />
     <Compile Include="Core\Commands\RecommendCommands\RecommendFullPortionsCommand.cs" />
     <Compile Include="Core\Commands\RecommendCommands\RecommendNotFullPortionsCommand.cs" />
-    <Compile Include="Core\Commands\UserCommand\ChangeCurrentWeightCommand.cs" />
+    <Compile Include="Core\Commands\UserCommands\ChangeCurrentWeightCommand.cs" />
     <Compile Include="Core\Commands\Command.cs" />
     <Compile Include="Core\Commands\ListRecipesCommand.cs" />
-    <Compile Include="Core\Commands\UserCommand\LogoutCommand.cs" />
+    <Compile Include="Core\Commands\UserCommands\LogoutCommand.cs" />
     <Compile Include="Core\Contracts\ICommand.cs" />
     <Compile Include="Core\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Contracts\ICommandParser.cs" />
@@ -102,12 +102,11 @@
     <Compile Include="Core\Providers\Reader.cs" />
     <Compile Include="Core\Providers\Writer.cs" />
     <Compile Include="Core\Providers\XMLProvider.cs" />
-    <Compile Include="Data\Database.cs" />
     <Compile Include="Data\HealthyEatingContext.cs" />
     <Compile Include="Data\IDatabase.cs" />
-    <Compile Include="Core\Commands\UserCommand\DeleteAccountCommand.cs" />
+    <Compile Include="Core\Commands\UserCommands\DeleteAccountCommand.cs" />
     <Compile Include="IoC\HealthyEatingModule.cs" />
-    <Compile Include="Core\Commands\UserCommand\LogInCommand.cs" />
+    <Compile Include="Core\Commands\UserCommands\LogInCommand.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Migrations\201710181549577_Hope.cs" />
     <Compile Include="Migrations\201710181549577_Hope.Designer.cs">
@@ -137,6 +136,18 @@
     <Compile Include="Migrations\201710182005277_quantity is decimal.Designer.cs">
       <DependentUpon>201710182005277_quantity is decimal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710182156012_mealstorecipesfixed.cs" />
+    <Compile Include="Migrations\201710182156012_mealstorecipesfixed.Designer.cs">
+      <DependentUpon>201710182156012_mealstorecipesfixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710182157475_puttedvirtuals.cs" />
+    <Compile Include="Migrations\201710182157475_puttedvirtuals.Designer.cs">
+      <DependentUpon>201710182157475_puttedvirtuals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710182206246_fluentapifirst.cs" />
+    <Compile Include="Migrations\201710182206246_fluentapifirst.Designer.cs">
+      <DependentUpon>201710182206246_fluentapifirst.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\Ingredient.cs" />
@@ -144,8 +155,8 @@
     <Compile Include="Models\Quantity.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Core\Commands\UserCommand\RecoverAccountCommand.cs" />
-    <Compile Include="Core\Commands\UserCommand\SignUpCommand.cs" />
+    <Compile Include="Core\Commands\UserCommands\RecoverAccountCommand.cs" />
+    <Compile Include="Core\Commands\UserCommands\SignUpCommand.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MealCategory.cs" />
@@ -175,6 +186,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710182005277_quantity is decimal.resx">
       <DependentUpon>201710182005277_quantity is decimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182156012_mealstorecipesfixed.resx">
+      <DependentUpon>201710182156012_mealstorecipesfixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182157475_puttedvirtuals.resx">
+      <DependentUpon>201710182157475_puttedvirtuals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182206246_fluentapifirst.resx">
+      <DependentUpon>201710182206246_fluentapifirst.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

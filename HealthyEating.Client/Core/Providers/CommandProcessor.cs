@@ -31,7 +31,7 @@ namespace HealthyEating.Client.Core.Providers
 
             var result = command.Execute(lineParameters);
 
-            this.writer.Write(result);
+            this.writer.WriteLine(result);
         }
     }
 }

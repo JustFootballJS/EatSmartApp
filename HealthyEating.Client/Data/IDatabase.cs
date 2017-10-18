@@ -1,17 +1,22 @@
 ﻿using HealthyEating.Client.Models;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace HealthyEating.Client.Data
 {
     public interface IDatabase
     {
-        IList<Ingredient> Ingredients { get; set; }
+        IDbSet<Ingredient> Ingredients { get; set; }
 
-        IList<Recipe> Recipes { get; set; }
+        IDbSet<Recipe> Recipes { get; set; }
 
-        ICollection<User> Users { get; set; }
+        IDbSet<User> Users { get; set; }
 
-        ICollection<Meal> Meals { get; set; }
+        IDbSet<Meal> Meals { get; set; }
+
+        IDbSet<Quantity> Quantities { get; set; }
+
+        int SaveChanges();
     }
 }

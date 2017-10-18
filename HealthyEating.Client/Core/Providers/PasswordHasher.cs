@@ -54,7 +54,8 @@ namespace HealthyEating.Client.Core.Providers
             }
 
             //extracts iterations and base42 string
-            var splittedHashString = userPassword.Replace("$MAtEeVUncraCkabLEHash$V1$", "").Split('$');
+            var splittedHashString = userPassword.Replace("$MAtEeVUncraCkabLEHash$V1$", "")
+                .Split(new[] { '$' }, StringSplitOptions.RemoveEmptyEntries);
             var iterations = int.Parse(splittedHashString[0]);
             var base64Hash = splittedHashString[1];
 

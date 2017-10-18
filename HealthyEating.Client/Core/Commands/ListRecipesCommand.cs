@@ -19,7 +19,7 @@ namespace HealthyEating.Client.Core.Commands
         {
             var recipes = db.Recipes;
 
-            if (recipes.Count == 0)
+            if (recipes.Count() == 0)
             {
                 return "There are no created recipes.";
             }

@@ -43,7 +43,7 @@ namespace HealthyEating.Client.Core.Commands.MealCommands
             }
 
             var meal = factory.CreateMeal(mealCategory, date, recipesToAdd);
-            return $"Meal with ID {db.Meals.Count - 1} was created!";
+            return $"Meal with ID {db.Meals.Count() - 1} was created!";
         }
     }
 }

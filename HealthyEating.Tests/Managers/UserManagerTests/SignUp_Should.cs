@@ -66,6 +66,6 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var username = "somelegitusername";
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(() => userManager.LogIn(username, password));
-        }
+        }            
     }
 }

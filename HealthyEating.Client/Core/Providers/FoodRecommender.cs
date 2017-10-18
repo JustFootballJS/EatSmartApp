@@ -1,4 +1,5 @@
 ﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
 using HealthyEating.Client.Models;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace HealthyEating.Client.Core.Providers
 {
-    public class FoodRecommender
+    public class FoodRecommender :IFoodRecomender
     {
         private readonly IDatabase database;
 
