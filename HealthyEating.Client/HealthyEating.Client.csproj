@@ -133,6 +133,10 @@
     <Compile Include="Migrations\201710181637060_quantity hope 2.Designer.cs">
       <DependentUpon>201710181637060_quantity hope 2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710182005277_quantity is decimal.cs" />
+    <Compile Include="Migrations\201710182005277_quantity is decimal.Designer.cs">
+      <DependentUpon>201710182005277_quantity is decimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\Ingredient.cs" />
@@ -168,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710181637060_quantity hope 2.resx">
       <DependentUpon>201710181637060_quantity hope 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182005277_quantity is decimal.resx">
+      <DependentUpon>201710182005277_quantity is decimal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
