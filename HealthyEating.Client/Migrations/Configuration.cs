@@ -10,7 +10,8 @@ namespace HealthyEating.Client.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
+            
         }
 
         protected override void Seed(HealthyEating.Client.Data.HealthyEatingContext context)

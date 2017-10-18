@@ -10,7 +10,7 @@ namespace HealthyEating.Client.Core.Contracts
 {
     public interface IModelFactory 
     {
-        Recipe CreateRecipe(string name, string ingredient);
+        Recipe CreateRecipe(string name, Ingredient ingredient);
 
         User CreateUser(string username, string password);
 

@@ -8,7 +8,7 @@ namespace HealthyEating.Client.Core.Factories
 {
     public class ModelFactory : IModelFactory
     {
-        public Recipe CreateRecipe(string name, string ingredient)
+        public Recipe CreateRecipe(string name, Ingredient ingredient)
         {
             return new Recipe() { Name = name, Ingredient = ingredient };
         }

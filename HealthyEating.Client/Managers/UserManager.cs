@@ -125,7 +125,7 @@ namespace HealthyEating.Client.Managers
                 Environment.NewLine,
                 $"Meal History: ",
                 Environment.NewLine,
-                string.Join(Environment.NewLine, user.Logs),
+                string.Join(Environment.NewLine, user.Meals),
                 Environment.NewLine,
                 $"Current weight: {user.CurrentWeight}",
                 Environment.NewLine

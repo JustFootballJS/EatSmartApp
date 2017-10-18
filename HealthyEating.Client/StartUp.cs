@@ -21,11 +21,11 @@ namespace HealthyEating.Client
             //var engine = kernel.Get<IEngine>();
             //engine.Run(); 
 
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthyEatingContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthyEatingContext, Configuration>());
 
-            //var recipe = new Recipe();
-            //recipe.Name = "Musaka";
-            //recipe.Ingredient = "kartofi";
+            var recipe = new Recipe();
+            recipe.Name = "Musaka";
+            recipe.Ingredient = null;
 
             using (var context = new HealthyEatingContext())
             {

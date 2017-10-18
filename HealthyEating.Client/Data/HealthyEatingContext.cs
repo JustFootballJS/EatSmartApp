@@ -13,10 +13,12 @@ namespace HealthyEating.Client.Data
         public HealthyEatingContext()
             : base("HealthyEating")
         {
-
+            
         }
 
         public virtual IDbSet<Recipe> Recipes { get; set; }
+
+        public virtual IDbSet<Ingredient> Ingredients { get; set; }
 
     }
 }
