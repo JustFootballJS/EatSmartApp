@@ -25,7 +25,7 @@ namespace HealthyEating.Client.Core.Commands.MealCommands
             try
             {
                 var idToRemove = int.Parse(commandLine[1]);
-                var mealToRemove = this.user.Meals.Where(m => m.Id == idToRemove).Single();
+                var mealToRemove = this.user.Meals.SingleOrDefault(m => m.Id == idToRemove);
                 mealToRemove.isDeleted = true;
 
                 return $"Meal with ID {idToRemove} was deleted.";

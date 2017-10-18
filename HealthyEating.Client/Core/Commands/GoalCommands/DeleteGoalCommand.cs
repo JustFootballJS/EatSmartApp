@@ -22,7 +22,17 @@ namespace HealthyEating.Client.Core.Commands.GoalCommands
 
         public string Execute(IList<string> commandLine)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int idToRemove = int.Parse(commandLine[0]);
+                Goal goalToRemove = this.user.Goals.SingleOrDefault(g => g.Id == idToRemove);
+                goalToRemove.isDeleted = true;
+                return $"Goal with ID {goalToRemove.Id} is deleted!";
+            }
+            catch
+            {
+                throw new ArgumentException("Enter a goal id to delete!");
+            }
         }
     }
 }
