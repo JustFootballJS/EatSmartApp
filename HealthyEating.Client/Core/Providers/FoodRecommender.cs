@@ -193,7 +193,7 @@ namespace HealthyEating.Client.Core.Providers
             }
             else
             {
-                throw new ArgumentException("Invalide nutrition name!");
+                throw new ArgumentException("Invalid nutrition name!");
             }
 
             var answer = new List<Recipe>();
@@ -204,11 +204,7 @@ namespace HealthyEating.Client.Core.Providers
                 if (maxCalories < allFoods[currentIndex].KCAL)
                 {
                     var ratio = maxCalories / allFoods[currentIndex].KCAL;
-
-                    foreach (var food in allFoods[currentIndex].Quantities)
-                    {
-                        food.QuantityValue *= ratio;
-                    }
+                    
                     //Implement change of ingredient quantity when ingredients are done
                 }
                 else
