@@ -1,9 +1,10 @@
 ﻿using HealthyEating.Client.Models;
+using System.Collections.Generic;
 
 namespace HealthyEating.Client.Core.Contracts
 {
     public interface IJsonProvider
     {
-        User ReadUserFromJSON(string fileName);
+        ICollection<Ingredient> SeedIngredients(string fileName);
     }
 }

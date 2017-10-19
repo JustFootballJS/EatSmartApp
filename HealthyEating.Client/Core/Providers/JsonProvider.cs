@@ -12,15 +12,15 @@ namespace HealthyEating.Client.Core.Providers
 {
     public class JsonProvider :IJsonProvider
     {
-        public User ReadUserFromJSON(string fileName)
+        public ICollection<Ingredient> SeedIngredients(string fileName)
         {
-            User user;
-            using (StreamReader reader = new StreamReader($"../../UsersInJSON/{fileName}"))
+            ICollection<Ingredient> ingredients;
+            using (StreamReader reader = new StreamReader($"../../IngredientsForSeeding/{fileName}"))
             {
                 var wholeFile = reader.ReadToEnd();
-                user = JsonConvert.DeserializeObject<User>(wholeFile);
+                ingredients = JsonConvert.DeserializeObject<ICollection<Ingredient>>(wholeFile);
             }
-            return user;
+            return ingredients;
         }
     }
 }

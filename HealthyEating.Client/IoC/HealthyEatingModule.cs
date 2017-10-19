@@ -27,6 +27,7 @@ namespace HealthyEating.Client.IoC
             this.Bind<IUserManager>().To<UserManager>().InSingletonScope();
             this.Bind<IDatabase>().To<HealthyEatingContext>();
             this.Bind<IPasswordHasher>().To<PasswordHasher>();
+            this.Bind<IRecipeManager>().To<RecipeManager>();
 
             this.Bind<ICommand>().To<CreateRecipeCommand>().Named("createrecipe");
             this.Bind<ICommand>().To<ListRecipesCommand>().Named("listrecipes");
@@ -40,7 +41,7 @@ namespace HealthyEating.Client.IoC
             this.Bind<ICommand>().To<RecommendNotFullPortionsCommand>().Named("recommendnotfullportions");
             this.Bind<ICommand>().To<CreateGoalCommand>().Named("creategoal");
             this.Bind<ICommand>().To<ShowUserCommand>().Named("showuser");
-
+            
 
 
         }

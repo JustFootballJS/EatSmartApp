@@ -1,0 +1,55 @@
+[{
+		"Name": "Tomato",
+		"Quantities": [],
+		"Kcal": 18,
+		"Protein": 1,
+		"Fat": 0,
+		"Carbohydrate": 4,
+		"Fibre": 1
+	},
+	{
+		"Name": "Cucumber",
+		"Quantities": [],
+		"Kcal": 12,
+		"Protein": 1,
+		"Fat": 0,
+		"Carbohydrate": 2,
+		"Fibre": 1
+	},
+	{
+		"Name": "Potato",
+		"Quantities": [],
+		"Kcal": 72,
+		"Protein": 1.8,
+		"Fat": 0.1,
+		"Carbohydrate": 17,
+		"Fibre": 1.2
+	},
+	{
+		"Name": "Spinach",
+		"Quantities": [],
+		"Kcal": 24,
+		"Protein": 2.9,
+		"Fat": 0.8,
+		"Carbohydrate": 1.3,
+		"Fibre": 2.1
+	},
+	{
+		"Name": "Carrot",
+		"Quantities": [],
+		"Kcal": 28,
+		"Protein": 0.7,
+		"Fat": 0.3,
+		"Carbohydrate": 5.7,
+		"Fibre": 2
+	},
+	{
+		"Name": "Aubergine",
+		"Quantities": [],
+		"Kcal": 15,
+		"Protein": 0.9,
+		"Fat": 0.4,
+		"Carbohydrate": 2.2,
+		"Fibre": 2
+	}
+]

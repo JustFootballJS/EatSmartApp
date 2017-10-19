@@ -9,40 +9,34 @@ using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core.Commands
 {
-    public class CreateRecipeCommand : ICommand
+    public class CreateRecipeCommand : Command, ICommand
     {
-        //private readonly IDatabase db;
-        private readonly HealthyEatingContext dbContext;
-        private readonly IModelFactory factory;
         private readonly IUserManager userManager;
-        public CreateRecipeCommand(HealthyEatingContext dbContext, IModelFactory factory, IUserManager userManager)
+        private readonly IRecipeManager recipeManager;
+        public CreateRecipeCommand(IReader reader, IWriter writer,IUserManager userManager, IRecipeManager recipeManager)
+            :base(reader,writer)
         {
-            //this.db = db;
+            
             this.userManager = userManager;
-            this.dbContext = dbContext;
-            this.factory = factory;
+            
+            this.recipeManager = recipeManager;
+           
         }
-        public string Execute()
+        public override string Execute()
         {
-            //string name;
-            //string ingredients;
+            var parameters = TakeInput();
+            var name = parameters[0];
+            var names = parameters[1];
+            var counts = parameters[2];
+            return this.recipeManager.CreateRecipe(name,counts,names);
+        }
+        private IList<string> TakeInput()
+        {
+            var name = base.ReadOneLine("Name: ");
+            var ingredientNames = base.ReadOneLine("IngredientNames: ");
+            var ingredientQuantities = base.ReadOneLine("IngredientQuantaties: ");
 
-            //try
-            //{
-            //    name = commandLine[0];
-            //    ingredients = commandLine[1];
-            //}
-            //catch
-            //{
-            //    throw new ArgumentException("Failed to parse Recipe command parameters.");
-            //}
-            //var ingredient = dbContext.Ingredients.SingleOrDefault(x =>x.Name == )
-            //var recipe = factory.CreateRecipe(name, ingredients);
-            //userManager.LoggedUser.Recipes.Add(recipe);
-            ////dbContext.Recipes.Add(recipe);
-            //dbContext.SaveChanges();
-            //return $"Recipe with ID {dbContext.Recipes.Count()} was created.";
-            return "";
+            return new List<string>() { name, ingredientNames, ingredientQuantities };
         }
     }
 }

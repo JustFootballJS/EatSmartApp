@@ -13,7 +13,7 @@ namespace HealthyEating.Client
     {
         static void Main()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthyEatingContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthyEatingContext,Configuration>());
 
             IKernel kernel = new StandardKernel(new HealthyEatingModule());
 

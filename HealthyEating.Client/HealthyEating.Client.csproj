@@ -87,6 +87,7 @@
     <Compile Include="Core\Contracts\IModelFactory.cs" />
     <Compile Include="Core\Contracts\IPasswordHasher.cs" />
     <Compile Include="Core\Contracts\IReader.cs" />
+    <Compile Include="Core\Contracts\IRecipeManager.cs" />
     <Compile Include="Core\Contracts\IUserManager.cs" />
     <Compile Include="Core\Contracts\IWriter.cs" />
     <Compile Include="Core\Contracts\IXMLProvider.cs" />
@@ -106,10 +107,23 @@
     <Compile Include="Core\Commands\UserCommands\DeleteAccountCommand.cs" />
     <Compile Include="IoC\HealthyEatingModule.cs" />
     <Compile Include="Core\Commands\UserCommands\LogInCommand.cs" />
+    <Compile Include="Managers\RecipeManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Migrations\201710192055386_initial.cs" />
     <Compile Include="Migrations\201710192055386_initial.Designer.cs">
       <DependentUpon>201710192055386_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710192121514_usernameNpass.cs" />
+    <Compile Include="Migrations\201710192121514_usernameNpass.Designer.cs">
+      <DependentUpon>201710192121514_usernameNpass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710192159229_seed.cs" />
+    <Compile Include="Migrations\201710192159229_seed.Designer.cs">
+      <DependentUpon>201710192159229_seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710192254470_seedss.cs" />
+    <Compile Include="Migrations\201710192254470_seedss.Designer.cs">
+      <DependentUpon>201710192254470_seedss.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Goal.cs" />
@@ -132,6 +146,15 @@
     <EmbeddedResource Include="Migrations\201710192055386_initial.resx">
       <DependentUpon>201710192055386_initial.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710192121514_usernameNpass.resx">
+      <DependentUpon>201710192121514_usernameNpass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710192159229_seed.resx">
+      <DependentUpon>201710192159229_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710192254470_seedss.resx">
+      <DependentUpon>201710192254470_seedss.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

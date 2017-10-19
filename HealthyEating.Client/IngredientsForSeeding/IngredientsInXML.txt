@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <element>
+      <Carbohydrate>0.1</Carbohydrate>
+      <Fat>21.6</Fat>
+      <Fibre>0</Fibre>
+      <Kcal>287</Kcal>
+      <Name>Bacon</Name>
+      <Protein>23.2</Protein>
+      <Quantities />
+   </element>
+   <element>
+      <Carbohydrate>0.2</Carbohydrate>
+      <Fat>6.7</Fat>
+      <Fibre>0.1</Fibre>
+      <Kcal>157</Kcal>
+      <Name>Chicken Breast</Name>
+      <Protein>23.9</Protein>
+      <Quantities />
+   </element>
+   <element>
+      <Carbohydrate>0</Carbohydrate>
+      <Fat>16</Fat>
+      <Fibre>0</Fibre>
+      <Kcal>260</Kcal>
+      <Name>Pork Chop</Name>
+      <Protein>29</Protein>
+      <Quantities />
+   </element>
+   <element>
+      <Carbohydrate>0</Carbohydrate>
+      <Fat>28.36</Fat>
+      <Fibre>0</Fibre>
+      <Kcal>339</Kcal>
+      <Name>Pork Sausage</Name>
+      <Protein>19.43</Protein>
+      <Quantities />
+   </element>
+   <element>
+      <Carbohydrate>0</Carbohydrate>
+      <Fat>13.6</Fat>
+      <Fibre>0</Fibre>
+      <Kcal>237.3</Kcal>
+      <Name>Lamb Leg</Name>
+      <Protein>28.6</Protein>
+      <Quantities />
+   </element>
+   <element>
+      <Carbohydrate>0.8</Carbohydrate>
+      <Fat>2.8</Fat>
+      <Fibre>0</Fibre>
+      <Kcal>115</Kcal>
+      <Name>Ham</Name>
+      <Protein>0.9</Protein>
+      <Quantities />
+   </element>
+</root>

@@ -8,9 +8,9 @@ namespace HealthyEating.Client.Core.Factories
 {
     public class ModelFactory : IModelFactory
     {
-        public Recipe CreateRecipe(string name, Ingredient ingredient)
+        public Recipe CreateRecipe(string name, IList<Quantity> quantities)
         {
-            return new Recipe() { Name = name };
+            return new Recipe() { Name = name,Quantities=quantities };
         }
 
         public User CreateUser(string username, string password)
@@ -26,6 +26,11 @@ namespace HealthyEating.Client.Core.Factories
         public Goal CreateGoal(int maxKcal, int wantedWeight)
         {
             return new Goal() { MaxKcal = maxKcal, WantedWeight = wantedWeight };
+        }
+
+        public Quantity CreateQuantity(Ingredient ingredient, string quantity)
+        {
+            return new Quantity { Ingredient = ingredient, QuantityValue = decimal.Parse(quantity) };
         }
     }
 }
