@@ -26,6 +26,6 @@ namespace HealthyEating.Client.Data
 
         public virtual IDbSet<Goal> Goals { get; set; }
 
-        public virtual IDbSet<Quantity> Quantities { get; set; }
+        //public virtual IDbSet<Quantity> Quantities { get; set; }
     }
 }

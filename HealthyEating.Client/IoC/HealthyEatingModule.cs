@@ -18,8 +18,7 @@ namespace HealthyEating.Client.IoC
             
         public override void Load()
         {
-            this.Bind<ICommandParser>().To<CommandParser>();
-            this.Bind<ICommandProcessor>().To<CommandProcessor>();
+            //this.Bind<ICommandParser>().To<CommandParser>();
             this.Bind<IReader>().To<Reader>();
             this.Bind<IWriter>().To<Writer>();
             this.Bind<IEngine>().To<Engine>();

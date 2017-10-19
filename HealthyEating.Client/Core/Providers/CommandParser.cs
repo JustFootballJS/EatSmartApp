@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,13 @@ namespace HealthyEating.Client.Core.Providers
 
         public CommandParser(ICommandFactory commandFactory)
         {
+            Guard.WhenArgument(commandFactory, "commandFactory").IsNull().Throw();
+
             this.commandFactory = commandFactory;
         }
         public ICommand ParseCommand(string commandLine)
         {
+            Guard.WhenArgument(commandLine, "commandLine").IsNullOrEmpty().Throw();
 
             var lineParameters = commandLine.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 

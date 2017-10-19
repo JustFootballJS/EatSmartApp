@@ -10,15 +10,20 @@ namespace HealthyEating.Client.Models
     {
         public Recipe()
         {
-            this.Quantities = new HashSet<Quantity>();
+            this.Meals = new HashSet<Meal>();
+            this.Ingredients = new HashSet<Ingredient>();
+            this.IsDeleted = false;
         }
 
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        //public virtual ICollection<Ingredient> Ingredients { get; set; }
-        public ICollection<Quantity> Quantities {get; set;}
+        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<Meal> Meals {get; set;}
+
+        //public ICollection<User> Users { get; set; }
+
         public decimal KCAL { get; set; }
 
         public decimal Protein { get; set; }
@@ -28,5 +33,7 @@ namespace HealthyEating.Client.Models
         public decimal Carbohydrate { get; set; }
 
         public decimal Fibre { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

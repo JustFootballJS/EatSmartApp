@@ -11,6 +11,7 @@ namespace HealthyEating.Client.Models
     {
         public Meal()
         {
+            this.Users = new HashSet<User>();
             this.Recipes = new HashSet<Recipe>();
         }
         public int Id { get; set; }
@@ -21,8 +22,8 @@ namespace HealthyEating.Client.Models
 
         public bool isDeleted { get; set; }
 
-        public virtual User User { get; set; }
-
+        public virtual ICollection<User> Users { get; set; }
+        
         public virtual ICollection<Recipe> Recipes { get; set; }
     }
 

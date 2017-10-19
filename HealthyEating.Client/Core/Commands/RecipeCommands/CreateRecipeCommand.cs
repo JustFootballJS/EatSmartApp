@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
 using HealthyEating.Client.Models;
 using System;
@@ -9,40 +10,43 @@ using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core.Commands
 {
-    public class CreateRecipeCommand : ICommand
+    public class CreateRecipeCommand : Command, ICommand
     {
-        //private readonly IDatabase db;
-        private readonly HealthyEatingContext dbContext;
-        private readonly IModelFactory factory;
-        private readonly IUserManager userManager;
-        public CreateRecipeCommand(HealthyEatingContext dbContext, IModelFactory factory, IUserManager userManager)
+        
+        private readonly HealthyEatingContext db;
+        private readonly IRecipeManager recipeManager;
+        public CreateRecipeCommand(IWriter writer, IReader reader, HealthyEatingContext db, IModelFactory factory, IRecipeManager recipeManager)
+            :base(reader, writer)
         {
-            //this.db = db;
-            this.userManager = userManager;
-            this.dbContext = dbContext;
-            this.factory = factory;
+            Guard.WhenArgument(factory, "factory").IsNull().Throw();
+            Guard.WhenArgument(db, "db").IsNull().Throw();
+            Guard.WhenArgument(recipeManager, "recipeManager").IsNull().Throw();
+            
+            this.recipeManager = recipeManager;
+            this.db = db;
+            
         }
-        public string Execute(IList<string> commandLine)
+        
+        public override string Execute(IList<string> commandLine)
         {
-            //string name;
-            //string ingredients;
+            var ingredients = new List<Ingredient>();
+            var parameters = TakeInput();
+            var name = commandLine[0];
+            ICollection<string> ingredientNames = commandLine[1].Split(' ');
 
-            //try
-            //{
-            //    name = commandLine[0];
-            //    ingredients = commandLine[1];
-            //}
-            //catch
-            //{
-            //    throw new ArgumentException("Failed to parse Recipe command parameters.");
-            //}
-            //var ingredient = dbContext.Ingredients.SingleOrDefault(x =>x.Name == )
-            //var recipe = factory.CreateRecipe(name, ingredients);
-            //userManager.LoggedUser.Recipes.Add(recipe);
-            ////dbContext.Recipes.Add(recipe);
-            //dbContext.SaveChanges();
-            //return $"Recipe with ID {dbContext.Recipes.Count()} was created.";
-            return "";
+            foreach (var ingredient in ingredientNames)
+            {
+                ingredients.Add(db.Ingredients.Where(x => x.Name == ingredient).SingleOrDefault());
+            }
+
+            return this.recipeManager.CreateRecipe(name, ingredients);
+        }
+        private IList<string> TakeInput()
+        {
+            var recipeName = ReadOneLine("Recipe name: ");
+            var ingredientNames = ReadOneLine("Ingredients: ");
+            
+            return new List<string>() { recipeName, ingredientNames };
         }
     }
 }

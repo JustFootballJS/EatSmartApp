@@ -6,7 +6,7 @@ namespace HealthyEating.Client.Models
     {
         public User()
         {
-            this.Recipes = new HashSet<Recipe>();
+            //this.Recipes = new HashSet<Recipe>();
             this.Goals = new HashSet<Goal>();
             this.Meals = new HashSet<Meal>();
         }
@@ -17,7 +17,8 @@ namespace HealthyEating.Client.Models
 
         public string Password { get; set; }
 
-        public virtual ICollection<Recipe> Recipes { get; set; }
+        //public int? recipeID { get; set; }
+        //public virtual ICollection<Recipe> Recipes { get; set; }
 
         public double CurrentWeight { get; set; }
 

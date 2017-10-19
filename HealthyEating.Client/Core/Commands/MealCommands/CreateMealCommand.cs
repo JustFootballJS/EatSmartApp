@@ -32,14 +32,14 @@ namespace HealthyEating.Client.Core.Commands.MealCommands
 
             for (int i = 1; i < commandLine.Count; i++)
             {
-                try
-                {
-                    recipesToAdd.Add(user.Recipes.Where(rec => rec.Name == commandLine[i]).Single());
-                }
-                catch
-                {
-                    throw new ArgumentException("Failed to find recipes in user.");
-                }
+                //try
+                //{
+                //    recipesToAdd.Add(user.Recipes.Where(rec => rec.Name == commandLine[i]).Single());
+                //}
+                //catch
+                //{
+                //    throw new ArgumentException("Failed to find recipes in user.");
+                //}
             }
 
             var meal = factory.CreateMeal(mealCategory, date, recipesToAdd);

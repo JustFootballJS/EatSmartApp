@@ -1,13 +1,6 @@
-﻿
-
-using HealthyEating.Client.Core;
-using HealthyEating.Client.Core.Providers;
-using HealthyEating.Client.Data;
-using HealthyEating.Client.IoC;
-using HealthyEating.Client.Migrations;
+﻿using HealthyEating.Client.Data;
 //using HealthyEating.Client.Migrations;
 using HealthyEating.Client.Models;
-using Ninject;
 using System.Data.Entity;
 using System.Linq;
 
@@ -22,18 +15,25 @@ namespace HealthyEating.Client
             //var engine = kernel.Get<IEngine>();
             //engine.Run(); 
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthyEatingContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthyEatingContext, Configuration>());
 
             var recipe = new Recipe();
+            var user = new User();
+
+            user.Username = "Pesho";
             recipe.Name = "Musaka";
-           
+            
 
             using (var context = new HealthyEatingContext())
             {
-                System.Console.WriteLine(context.Recipes.Count());
-                System.Console.WriteLine(context.Quantities.Count());
+                context.Users.Add(user);
+                context.Recipes.Add(recipe);
+                System.Console.WriteLine(context);
+                //System.Console.WriteLine(context.Quantities.Count());
 
+                context.SaveChanges();
             }
+            
 
 
         }
