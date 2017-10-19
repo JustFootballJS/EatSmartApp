@@ -22,7 +22,7 @@ namespace HealthyEating.Client.Core.Commands
             this.dbContext = dbContext;
             this.factory = factory;
         }
-        public string Execute(IList<string> commandLine)
+        public string Execute()
         {
             //string name;
             //string ingredients;

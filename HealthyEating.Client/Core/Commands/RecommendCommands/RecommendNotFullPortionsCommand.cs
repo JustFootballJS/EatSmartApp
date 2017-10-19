@@ -18,7 +18,7 @@ namespace HealthyEating.Client.Core.Commands.RecomendCommands
             this.foodRecomender = foodRecomender;
         }
 
-        public override string Execute(IList<string> commandLine)
+        public override string Execute()
         {
             IList<string> inputParameters = this.TakeInput();
             var nutrition = inputParameters[0];

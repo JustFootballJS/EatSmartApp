@@ -17,7 +17,7 @@ namespace HealthyEating.Client.Core.Commands
 
             this.userManager = userManager;
         }
-        public override string Execute(IList<string> commandLine)
+        public override string Execute()
         {
             var inputParameters = TakeInput();
             var username = inputParameters[0];

@@ -20,19 +20,20 @@ namespace HealthyEating.Client.Core.Commands.GoalCommands
             this.user = user;
         }
 
-        public string Execute(IList<string> commandLine)
+        public string Execute()
         {
-            try
-            {
-                int idToRemove = int.Parse(commandLine[0]);
-                Goal goalToRemove = this.user.Goals.SingleOrDefault(g => g.Id == idToRemove);
-                goalToRemove.isDeleted = true;
-                return $"Goal with ID {goalToRemove.Id} is deleted!";
-            }
-            catch
-            {
-                throw new ArgumentException("Enter a goal id to delete!");
-            }
+            //try
+            //{
+            //    int idToRemove = int.Parse(commandLine[0]);
+            //    Goal goalToRemove = this.user.Goals.SingleOrDefault(g => g.Id == idToRemove);
+            //    goalToRemove.isDeleted = true;
+            //    return $"Goal with ID {goalToRemove.Id} is deleted!";
+            //}
+            //catch
+            //{
+            //    throw new ArgumentException("Enter a goal id to delete!");
+            //}
+            return null;
         }
     }
 }

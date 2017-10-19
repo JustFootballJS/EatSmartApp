@@ -40,6 +40,7 @@ namespace HealthyEating.Client.Managers
 
             var user = modelFactory.CreateUser(username, hashedPassword);
             database.Users.Add(user);
+            this.LoggedUser = user;
             database.SaveChanges();
             return $"User {username} was created successfully";
         }
@@ -51,7 +52,11 @@ namespace HealthyEating.Client.Managers
 
             var user = database.Users.SingleOrDefault(x => x.Username == username);
 
-            if (user != null && passwordHasher.Verify(password, user.Password) && user.IsDeleted == false)
+            if (this.LoggedUser != null)
+            {
+                throw new ArgumentException("You are currently logged in.Please logout first!");
+            }
+            else if (user != null && passwordHasher.Verify(password, user.Password) && user.IsDeleted == false)
             {
                 this.LoggedUser = user;
 
@@ -65,6 +70,10 @@ namespace HealthyEating.Client.Managers
 
         public string Logout()
         {
+            if (this.LoggedUser == null)
+            {
+                throw new ArgumentException("You are not currently logged in. Please login to logout.");
+            }
             this.LoggedUser = null;
             return "Log out successful";
         }
@@ -99,6 +108,10 @@ namespace HealthyEating.Client.Managers
 
         public string DeleteAccount(string answer)
         {
+            if (this.LoggedUser == null)
+            {
+                throw new ArgumentException("Please login first!");
+            }
             if (answer == "yes" || answer == "y")
             {
                 this.LoggedUser.IsDeleted = true;
@@ -120,11 +133,11 @@ namespace HealthyEating.Client.Managers
             return "Current weight was changed successfully";
         }
 
-        public string UserAsString(IDatabase database, string username)
+        public string UserAsString( string username)
         {
             Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
 
-            var user = database.Users.Single(x => x.Username == username);
+            var user = this.database.Users.Single(x => x.Username == username);
             return string.Concat(
                 $"Username: {user.Username}",
                 Environment.NewLine,

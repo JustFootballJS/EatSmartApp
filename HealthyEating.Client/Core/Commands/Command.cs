@@ -23,6 +23,6 @@ namespace HealthyEating.Client.Core.Commands
             return this.reader.Read();
         }
 
-        public abstract string Execute(IList<string> commandLine);       
+        public abstract string Execute();       
     }
 }

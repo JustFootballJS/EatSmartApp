@@ -12,7 +12,7 @@ namespace HealthyEating.Client.Core.Commands.UserCommands
         {
             this.userManager = userManager;
         }
-        public override string Execute(IList<string> commandLine)
+        public override string Execute()
         {
             return this.userManager.Logout();
         }

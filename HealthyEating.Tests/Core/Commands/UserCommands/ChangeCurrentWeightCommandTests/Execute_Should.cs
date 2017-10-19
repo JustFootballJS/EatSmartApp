@@ -21,12 +21,12 @@ namespace HealthyEating.Tests.Core.Commands.UserCommands.ChangeCurrentWeightComm
             var writerMock = new Mock<IWriter>();
             var userManagerMock = new Mock<IUserManager>();
 
-            var listMock = new List<string>();
+            
             readerMock.Setup(x => x.Read()).Returns(It.IsAny<double>().ToString());
             var command = new ChangeCurrentWeightCommand(readerMock.Object,writerMock.Object, userManagerMock.Object);
 
             //Act
-            command.Execute(listMock);
+            command.Execute();
 
             //Assert
             userManagerMock.Verify(x => x.ChangeCurrentWeight(It.IsAny<double>()), Times.Once);
@@ -40,12 +40,12 @@ namespace HealthyEating.Tests.Core.Commands.UserCommands.ChangeCurrentWeightComm
             var writerMock = new Mock<IWriter>();
             var userManagerMock = new Mock<IUserManager>();
 
-            var listMock = new List<string>();
+          
             readerMock.Setup(x => x.Read()).Returns("Not a number");
             var command = new ChangeCurrentWeightCommand(readerMock.Object, writerMock.Object, userManagerMock.Object);
 
             //Act&Assert
-            Assert.ThrowsException<FormatException>(() => command.Execute(listMock));
+            Assert.ThrowsException<FormatException>(() => command.Execute());
            
         }
     }

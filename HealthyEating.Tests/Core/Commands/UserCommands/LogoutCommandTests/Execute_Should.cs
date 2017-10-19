@@ -22,12 +22,12 @@ namespace HealthyEating.Tests.Core.Commands.UserCommands.LogoutCommandTests
             var writerMock = new Mock<IWriter>();
             var userManagerMock = new Mock<IUserManager>();
 
-            var listMock = new List<string>();
+            
             
             var command = new LogoutCommand(readerMock.Object, writerMock.Object, userManagerMock.Object);
 
             //Act
-            command.Execute(listMock);
+            command.Execute();
 
             //Assert
             userManagerMock.Verify(x => x.Logout(), Times.Once);

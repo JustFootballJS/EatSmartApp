@@ -1,15 +1,12 @@
 ﻿using Bytes2you.Validation;
 using HealthyEating.Client.Core.Contracts;
-using HealthyEating.Client.Data;
 using System.Collections.Generic;
 
 namespace HealthyEating.Client.Core.Commands
 {
     public class SignUpCommand : Command, ICommand
     {
-        private readonly IDatabase database;
         private readonly IUserManager userManager;
-        private readonly IPasswordHasher passwordHasher;
 
         public SignUpCommand( IUserManager userManager, IReader reader, IWriter writer)
             : base(reader, writer)
@@ -19,7 +16,7 @@ namespace HealthyEating.Client.Core.Commands
             this.userManager = userManager;           
         }
 
-        public override string Execute(IList<string> commandLine)
+        public override string Execute()
         {
             var parameters = TakeInput();
             var username = parameters[0];

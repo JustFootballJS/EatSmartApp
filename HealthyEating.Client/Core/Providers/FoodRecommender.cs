@@ -15,6 +15,7 @@ namespace HealthyEating.Client.Core.Providers
         public FoodRecommender(IDatabase database)
         {
             Guard.WhenArgument(database, "database").IsNull().Throw();
+
             this.database = database;
         }
 
@@ -200,13 +201,29 @@ namespace HealthyEating.Client.Core.Providers
             var answer = new List<Recipe>();
             var currentIndex = 0;
 
-            while (maxCalories >= 0 && currentIndex < allFoods.Length)
+            while (maxCalories > 0 && currentIndex < allFoods.Length)
             {
                 if (maxCalories < allFoods[currentIndex].KCAL)
                 {
                     var ratio = maxCalories / allFoods[currentIndex].KCAL;
+
+                    var newRecipe = new Recipe();
+                    newRecipe.Name = allFoods[currentIndex].Name;
+                    newRecipe.KCAL = allFoods[currentIndex].KCAL*ratio;
+                    newRecipe.Protein = allFoods[currentIndex].Protein*ratio;
+                    newRecipe.Fibre = allFoods[currentIndex].Fibre*ratio;
+                    newRecipe.Fat = allFoods[currentIndex].Fat*ratio;
+                    newRecipe.Carbohydrate = allFoods[currentIndex].Carbohydrate * ratio;
+                    maxCalories = 0;
+                    foreach (var ingredient in allFoods[currentIndex].Quantities)
+                    {
+                        var newQuantity = new Quantity();
+                        newQuantity.Ingredient = ingredient.Ingredient;
+                        newQuantity.QuantityValue = ingredient.QuantityValue * ratio;
+                        newRecipe.Quantities.Add(newQuantity);
+                    }
                     
-                    //Implement change of ingredient quantity when ingredients are done
+                    answer.Add(newRecipe);
                 }
                 else
                 {

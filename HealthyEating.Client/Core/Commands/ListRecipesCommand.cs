@@ -15,7 +15,7 @@ namespace HealthyEating.Client.Core.Commands
         {
             this.db = db;
         }
-        public string Execute(IList<string> commandLine)
+        public string Execute()
         {
             var recipes = db.Recipes;
 

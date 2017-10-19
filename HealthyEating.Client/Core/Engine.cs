@@ -7,15 +7,15 @@ namespace HealthyEating.Client.Core
     {
         private readonly IReader reader;
         private readonly IWriter writer;
-        private readonly ICommandParser commandParser;
-        private readonly ICommandProcessor commandProcessor;
+        private readonly ICommandFactory commandFactory;
+ 
 
-        public Engine(IReader reader, IWriter writer, ICommandParser commandParser, ICommandProcessor commandProcessor)
+        public Engine(IReader reader, IWriter writer, ICommandFactory commandFactory)
         {
             this.reader = reader;
             this.writer = writer;
-            this.commandParser = commandParser;
-            this.commandProcessor = commandProcessor;
+           
+            this.commandFactory = commandFactory;
 
         }
         public void Run()
@@ -25,11 +25,16 @@ namespace HealthyEating.Client.Core
             {
                 try
                 {
-                    var command = this.commandParser.ParseCommand(commandLine);
-                    if (command != null)
-                    {
-                        this.commandProcessor.ProcessSingleCommand(command, commandLine);
-                    }
+                    var command= this.commandFactory.CreateCommand(commandLine);
+                    var result = command.Execute();
+
+                    this.writer.WriteLine(result);
+
+                    //var command = this.commandParser.ParseCommand(commandLine);
+                    //if (command != null)
+                    //{
+                    //    this.commandProcessor.ProcessSingleCommand(command, commandLine);
+                    //}
                 }
                 catch (Exception ex)
                 {

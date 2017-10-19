@@ -6,6 +6,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace HealthyEating.Tests.Managers.UserManagerTests
 {
@@ -74,15 +76,21 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
         public void ThrowArgumentExceptionWithCustomMessage_WhenUsernameIsIncorrect()
         {
             //Arrange
+            IQueryable<User> users = new List<User>().AsQueryable();
+
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
             var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
             var username = "usernameWhichIsNotContainedInTheDB";
             var password = "passwordWhichIsContainedInTheDB";
-            var usersListMock = new List<User>();
+            var setMock = new Mock<DbSet<User>>();
+            setMock.As<IQueryable<User>>().Setup(m => m.Provider).Returns(users.Provider);
+            setMock.As<IQueryable<User>>().Setup(m => m.Expression).Returns(users.Expression);
+            setMock.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(users.ElementType);
+            setMock.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(() => users.GetEnumerator());
 
-            //databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
+            databaseMock.SetupGet(x => x.Users).Returns(setMock.Object);
 
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(()=>userManager.LogIn(username, password), "Wrong username or password");         
@@ -92,17 +100,26 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
         public void ThrowArgumentExceptionWithCustomMessage_WhenPasswordIsIncorrect()
         {
             //Arrange
+            var username = "usernameWhichIsContainedInTheDB";
+            var password = "passwordWhichIsNotContainedInTheDB";
+            IQueryable<User> users = new List<User>()
+            {
+                new User(){Username=username,Password=password}
+            }.AsQueryable();
+
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
-            var username = "usernameWhichIsContainedInTheDB";
-            var password = "passwordWhichIsNotContainedInTheDB";
-            var usersListMock = new List<User>();
-            usersListMock.Add(new User() { Username = username, Password = "passwordDifferentFromOurs" });
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);            
 
-            //databaseMock.SetupGet(x => x.Users).Returns(usersListMock);
-            //passwordHasherMock.Setup(x => x.Verify(password, "passwordDifferentFromOurs")).Returns(false);
+            var setMock = new Mock<DbSet<User>>();
+            setMock.As<IQueryable<User>>().Setup(m => m.Provider).Returns(users.Provider);
+            setMock.As<IQueryable<User>>().Setup(m => m.Expression).Returns(users.Expression);
+            setMock.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(users.ElementType);
+            setMock.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(() => users.GetEnumerator());
+
+            databaseMock.SetupGet(x => x.Users).Returns(setMock.Object);
+            passwordHasherMock.Setup(x => x.Verify(password, "passwordDifferentFromOurs")).Returns(false);
 
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(() => userManager.LogIn(username, password), "Wrong username or password");

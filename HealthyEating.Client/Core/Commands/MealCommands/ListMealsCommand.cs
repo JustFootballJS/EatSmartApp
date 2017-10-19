@@ -19,7 +19,7 @@ namespace HealthyEating.Client.Core.Commands.MealCommands
             this.db = db;
         }
 
-        public string Execute(IList<string> commandLine)
+        public string Execute()
         {
             var meals = user.Meals;
             string result = null;
