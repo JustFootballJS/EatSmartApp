@@ -7,29 +7,19 @@ namespace HealthyEating.Client.Core.Commands
     {
         private readonly IUserManager userManager;
 
-        public DeleteAccountCommand(IReader  reader, IWriter writer,IUserManager userManager)
-            :base(reader,writer)
+        public DeleteAccountCommand(IReader reader, IWriter writer, IUserManager userManager)
+            : base(reader, writer)
         {
             this.userManager = userManager;
         }
         public override string Execute(IList<string> commandLine)
         {
             var answer = TakeInput()[0];
-            if (answer == "yes" || answer == "y")
-            {
-                this.userManager.LoggedUser.IsDeleted = true;
-                this.userManager.LoggedUser = null;
-
-                return "Your account has been deleted";
-            }
-            else
-            {
-                return "Your account has not been deleted";
-            }
+            return this.userManager.DeleteAccount(answer);
         }
         private List<string> TakeInput()
         {
-            var answer=base.ReadOneLine("Are you sure?");
+            var answer = base.ReadOneLine("Are you sure?");
             return new List<string>() { answer };
         }
     }

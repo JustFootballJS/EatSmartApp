@@ -18,8 +18,7 @@ namespace HealthyEating.Client.Core.Commands
         public override string Execute(IList<string> commandLine)
         {
             var newWeight = double.Parse(TakeInput()[0]);
-            this.userManager.LoggedUser.CurrentWeight = newWeight;
-            return "Current weight was changed successfully";
+            return this.userManager.ChangeCurrentWeight(newWeight);
         }
 
         private IList<string> TakeInput()
