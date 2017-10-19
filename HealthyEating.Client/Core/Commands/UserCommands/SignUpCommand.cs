@@ -28,6 +28,7 @@ namespace HealthyEating.Client.Core.Commands
         private IList<string> TakeInput()
         {
             var username = ReadOneLine("Username: ");
+           
             var password = ReadOneLine("Password: ");
             var confirmedPassword = this.ReadOneLine("Confirm Password: ");
             return new List<string>() { username, password };

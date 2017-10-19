@@ -18,9 +18,9 @@ namespace HealthyEating.Client.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
 
-          
+           
+            base.OnModelCreating(modelBuilder);
 
         }
 
@@ -33,5 +33,8 @@ namespace HealthyEating.Client.Data
         public virtual IDbSet<Meal> Meals { get; set; }
 
         public virtual IDbSet<Quantity> Quantities { get; set; }
+
+        public virtual IDbSet<Goal> Goals { get; set; }
+       
     }
 }

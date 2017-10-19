@@ -17,6 +17,8 @@ namespace HealthyEating.Client.Data
 
         IDbSet<Quantity> Quantities { get; set; }
 
+        IDbSet<Goal> Goals { get; set; }
+
         int SaveChanges();
     }
 }

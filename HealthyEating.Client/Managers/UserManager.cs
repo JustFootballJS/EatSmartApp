@@ -41,7 +41,7 @@ namespace HealthyEating.Client.Managers
             var user = modelFactory.CreateUser(username, hashedPassword);
             database.Users.Add(user);
             this.LoggedUser = user;
-            database.SaveChanges();
+           this. database.SaveChanges();
             return $"User {username} was created successfully";
         }
 
@@ -50,13 +50,23 @@ namespace HealthyEating.Client.Managers
             Guard.WhenArgument(username, "username").IsEmpty().IsNullOrWhiteSpace().Throw();
             Guard.WhenArgument(password, "password").IsEmpty().IsNullOrWhiteSpace().Throw();
 
-            var user = database.Users.SingleOrDefault(x => x.Username == username);
-
             if (this.LoggedUser != null)
             {
-                throw new ArgumentException("You are currently logged in.Please logout first!");
+                throw new ArgumentException("You are currently logged in. Please logout first!");
             }
-            else if (user != null && passwordHasher.Verify(password, user.Password) && user.IsDeleted == false)
+
+            User user = null;
+            foreach (var item in database.Users)
+            {
+                if (item.Username == username)
+                {
+                    user = item;
+                }
+            }
+                        
+
+           
+             if (user != null && passwordHasher.Verify(password, user.Password) && user.IsDeleted == false)
             {
                 this.LoggedUser = user;
 
@@ -85,15 +95,15 @@ namespace HealthyEating.Client.Managers
             Guard.WhenArgument(answer, "answer").IsEmpty().IsNullOrWhiteSpace().Throw();
 
             var user = this.database.Users.SingleOrDefault(x => x.Username == username);
-            if (user == null)
+            if (user == null|| this.passwordHasher.Verify(password, user.Password)==false)
             {
-                throw new Exception("Wrong username or password");
+                throw new ArgumentException("Wrong username or password");
             }
             else if (user.IsDeleted == false)
             {
-                throw new Exception("Sorry but this account is active");
-            }
-            else if (this.passwordHasher.Verify(password, user.Password) && (answer == "yes" || answer == "y"))
+                throw new ArgumentException("Sorry but this account is active");
+            }           
+            else if (answer == "yes" || answer == "y")
             {
                 user.IsDeleted = false;
                 this.LoggedUser = user;
@@ -101,7 +111,7 @@ namespace HealthyEating.Client.Managers
             }
             else 
             {
-                throw new Exception("You cannot proceed without agreeing");
+                throw new ArgumentException("You cannot proceed without agreeing");
             }
            
         }

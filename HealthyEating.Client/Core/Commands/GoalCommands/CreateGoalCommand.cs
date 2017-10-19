@@ -13,17 +13,22 @@ namespace HealthyEating.Client.Core.Commands.GoalCommands
     {
         private readonly IDatabase db;
         private readonly IModelFactory factory;
-        private readonly User user;
+        private readonly IUserManager userManager;
 
-        public CreateGoalCommand(IDatabase db, IModelFactory factory, User user)
+        public CreateGoalCommand(IDatabase db, IModelFactory factory, IUserManager userManager)
         {
             this.db = db;
             this.factory = factory;
-            this.user = user;
+            this.userManager = userManager;
         }
 
         public string Execute()
         {
+            //this.userManager.LoggedUser.Username = "abvc";
+            //this.db.Users.Single(x => x.Id == this.userManager.LoggedUser.Id).Username = "abvc";
+            //this.db.SaveChanges();
+            //Console.WriteLine(this.db.Users.Single(x => x.Id == this.userManager.LoggedUser.Id).Username);
+            // Console.WriteLine();
             //try
             //{
             //    int maxKcal = int.Parse(commandLine[0]);
@@ -37,6 +42,9 @@ namespace HealthyEating.Client.Core.Commands.GoalCommands
             //}
 
             //return $"Meal with ID {user.Goals.Count - 1} was created!";
+            this.userManager.LoggedUser.Goal = new Goal() { WantedWeight = 20 };
+            this.db.Users.Single(x => x.Id == this.userManager.LoggedUser.Id).Goal = new Goal() { WantedWeight = 10 };
+            this.db.SaveChanges();
             return null;
         }
     }

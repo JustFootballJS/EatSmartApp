@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,8 @@ namespace HealthyEating.Client.Models
 
         }
 
-        [ForeignKey("User_Id")]
-        public int GoalId { get; set; }
+       [Key,ForeignKey("User")]
+        public int UserId { get; set; }
         
         public int MaxKcal { get; set; }
 

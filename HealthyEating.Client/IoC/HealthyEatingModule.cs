@@ -1,5 +1,6 @@
 ﻿using HealthyEating.Client.Core;
 using HealthyEating.Client.Core.Commands;
+using HealthyEating.Client.Core.Commands.GoalCommands;
 using HealthyEating.Client.Core.Commands.RecomendCommands;
 using HealthyEating.Client.Core.Commands.UserCommands;
 using HealthyEating.Client.Core.Contracts;
@@ -37,6 +38,8 @@ namespace HealthyEating.Client.IoC
             this.Bind<ICommand>().To<SignUpCommand>().Named("signup");
             this.Bind<ICommand>().To<RecommendFullPortionsCommand>().Named("recommendfullportions");
             this.Bind<ICommand>().To<RecommendNotFullPortionsCommand>().Named("recommendnotfullportions");
+            this.Bind<ICommand>().To<CreateGoalCommand>().Named("creategoal");
+            this.Bind<ICommand>().To<ShowUserCommand>().Named("showuser");
 
 
 
