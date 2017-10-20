@@ -27,19 +27,21 @@ namespace HealthyEating.Client.Core.Commands.MealCommands
             MealCategory mealCategory = (MealCategory)MealCategory.Parse(typeof(MealCategory), 
                 base.ReadOneLine("Breakfast/Lunch/Supper: ").ToLower());
             DateTime mealDate = Convert.ToDateTime(base.ReadOneLine("When did you eat it? (DD/MM/YYYY): "));
-            string recipeToAdd;
+            string recipeToAdd = ReadOneLine("What did you eat?: ");
             List<Recipe> listOfRecipesToAdd = new List<Recipe>();
 
             do
             {
-                recipeToAdd = ReadOneLine("What did you eat?: ");
                 listOfRecipesToAdd.Add(this.UserManager.LoggedUser.Recipes.SingleOrDefault(r => r.Name == recipeToAdd));
+                recipeToAdd = ReadOneLine("What did you eat?: ");
+
             }
             while (recipeToAdd != "");
             
             Meal meal = this.Factory.CreateMeal(mealCategory, mealDate, listOfRecipesToAdd);
-            this.UserManager.LoggedUser.Meals.Add(meal);
-
+           // this.UserManager.LoggedUser.Meals.Add(meal);
+            this.Database.Meals.Add(meal);
+            this.Database.SaveChanges();
             return $"Meal with Id {this.UserManager.LoggedUser.Meals.Count - 1} was created!";
         }
     }

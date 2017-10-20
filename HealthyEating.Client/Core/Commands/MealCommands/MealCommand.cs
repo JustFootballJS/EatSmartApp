@@ -23,15 +23,15 @@ namespace HealthyEating.Client.Core.Commands.MealCommands
             Guard.WhenArgument(database, "database").IsNull().Throw();
 
 
-            this.factory = factory;
-            this.userManager = userManager;
-            this.database = database;
+            this.Factory = factory;
+            this.UserManager = userManager;
+            this.Database = database;
         }
 
         protected IUserManager UserManager { get; }
         protected IModelFactory Factory { get; }
         protected IWriter Writer { get; }
-
+        protected IDatabase Database { get; set; }
         public abstract override string Execute();
     }
 }
