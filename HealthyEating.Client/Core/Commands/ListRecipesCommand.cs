@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace HealthyEating.Client.Core.Commands
         private readonly IDatabase db;
         public ListRecipesCommand(IDatabase db)
         {
+            Guard.WhenArgument(db, "db").IsNull().Throw();
+
             this.db = db;
         }
         public string Execute()

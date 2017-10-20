@@ -60,6 +60,8 @@
     <Compile Include="Core\Commands\UserCommands\DeleteAccountCommandTests\Execute_Should.cs" />
     <Compile Include="Core\Commands\UserCommands\LogoutCommandTests\Execute_Should.cs" />
     <Compile Include="Core\Commands\UserCommands\RecoverAccountCommandTests\Execute_Should.cs" />
+    <Compile Include="Core\Providers\FoodRecomenderTests\RecommendFullPortions_Should.cs" />
+    <Compile Include="Core\Providers\FoodRecomenderTests\RecommendNotFullPortions_Should.cs" />
     <Compile Include="Managers\UserManagerTests\LogIn_Should.cs" />
     <Compile Include="Managers\UserManagerTests\Logout_Should.cs" />
     <Compile Include="Managers\UserManagerTests\RecoverAccount_Should.cs" />

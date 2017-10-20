@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using System;
 
 namespace HealthyEating.Client.Core
@@ -12,6 +13,12 @@ namespace HealthyEating.Client.Core
 
         public Engine(IReader reader, IWriter writer, ICommandFactory commandFactory)
         {
+            Guard.WhenArgument(reader, "reader").IsNull().Throw();
+            Guard.WhenArgument(writer, "writer").IsNull().Throw();
+            Guard.WhenArgument(commandFactory, "commandFactory").IsNull().Throw();
+
+
+
             this.reader = reader;
             this.writer = writer;
            
@@ -21,7 +28,7 @@ namespace HealthyEating.Client.Core
         public void Run()
         {
             string commandLine = null;
-            while ((commandLine = reader.Read()) != "exit")
+            while ((commandLine = string.Join("",reader.Read().ToLower().Split(new[] { ' ' },StringSplitOptions.RemoveEmptyEntries))) != "exit")
             {
                 try
                 {
@@ -30,11 +37,7 @@ namespace HealthyEating.Client.Core
 
                     this.writer.WriteLine(result);
 
-                    //var command = this.commandParser.ParseCommand(commandLine);
-                    //if (command != null)
-                    //{
-                    //    this.commandProcessor.ProcessSingleCommand(command, commandLine);
-                    //}
+                    
                 }
                 catch (Exception ex)
                 {
@@ -43,7 +46,7 @@ namespace HealthyEating.Client.Core
                         ex = ex.InnerException;
                     }
 
-                    this.writer.WriteLine(string.Format("ERROR: {0}", ex.Message));
+                    this.writer.WriteLine( ex.Message);
                 }
             }
         }

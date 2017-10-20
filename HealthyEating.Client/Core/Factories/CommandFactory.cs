@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,23 @@ namespace HealthyEating.Client.Core.Factories
 
         public CommandFactory(IKernel kernel)
         {
+            Guard.WhenArgument(kernel, "kernel").IsNull().Throw();
+
             this.kernel = kernel;
         }
 
         public ICommand CreateCommand(string commandName)
         {
-            return this.kernel.Get<ICommand>(commandName);
+            try
+            {
+                return this.kernel.Get<ICommand>(commandName);
+
+            }
+            catch (Exception)
+            {
+
+                throw new ArgumentException("Wrong Command");
+            }
         }
     }
 }

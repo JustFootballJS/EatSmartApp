@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
 using System;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace HealthyEating.Client.Managers
 
         public IngredientManager(IModelFactory modelFactory, IDatabase database)
         {
+            Guard.WhenArgument(modelFactory, "modelFactory").IsNull().Throw();
+            Guard.WhenArgument(database, "database").IsNull().Throw();
+
             this.modelFactory = modelFactory;
             this.database = database;
         }

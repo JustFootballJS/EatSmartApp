@@ -160,17 +160,17 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
         public void ThrowArgumentException_WhenAlreadyLoggedIn()
         {
             //Arrange
-            //var databaseMock = new Mock<IDatabase>();
-            //var passwordHasherMock = new Mock<IPasswordHasher>();
-            //var modelFactoryMock = new Mock<IModelFactory>();
-            //var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
-            //userManager.LoggedUser = new User();
-            //var username = "CorrectUsername";
-            //var password = "CorrectPassword";
+            var databaseMock = new Mock<IDatabase>();
+            var passwordHasherMock = new Mock<IPasswordHasher>();
+            var modelFactoryMock = new Mock<IModelFactory>();
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            userManager.LoggedUser = new User();
+            var username = "CorrectUsername";
+            var password = "CorrectPassword";
 
 
             //Act & Assert
-            //Assert.ThrowsException<ArgumentException>(()=>userManager.LogIn(username,password));
+            Assert.ThrowsException<ArgumentException>(() => userManager.LogIn(username, password));
         }
 
         [TestMethod]
@@ -203,7 +203,7 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             userManager.LogIn(username, password);
 
             //Assert
-            //Assert.AreSame(users.First(), userManager.LoggedUser);
+            Assert.AreSame(users.First(), userManager.LoggedUser);
         }
 
         [TestMethod]

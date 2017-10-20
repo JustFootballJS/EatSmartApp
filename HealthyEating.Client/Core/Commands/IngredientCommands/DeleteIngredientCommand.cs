@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using System.Collections.Generic;
 
 namespace HealthyEating.Client.Core.Commands.IngredientCommands
@@ -10,6 +11,8 @@ namespace HealthyEating.Client.Core.Commands.IngredientCommands
         public DeleteIngredientCommand(IReader reader,IWriter writer, IIngredientManager ingredientManager)
             :base(reader,writer)
         {
+            Guard.WhenArgument(ingredientManager, "ingredientManager").IsNull().Throw();
+
             this.ingredientManager = ingredientManager;
         }
         public override string Execute()

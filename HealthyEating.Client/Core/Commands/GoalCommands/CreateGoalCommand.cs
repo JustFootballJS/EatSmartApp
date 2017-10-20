@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
 using HealthyEating.Client.Models;
 using System;
@@ -19,6 +20,10 @@ namespace HealthyEating.Client.Core.Commands.GoalCommands
         public CreateGoalCommand(IReader reader, IWriter writer,IDatabase db, IModelFactory factory, IGoalManager goalManager)
             :base(reader,writer)
         {
+            Guard.WhenArgument(db, "db").IsNull().Throw();
+            Guard.WhenArgument(factory, "factory").IsNull().Throw();
+            Guard.WhenArgument(goalManager, "goalManager").IsNull().Throw();
+
             this.db = db;
             this.factory = factory;
             

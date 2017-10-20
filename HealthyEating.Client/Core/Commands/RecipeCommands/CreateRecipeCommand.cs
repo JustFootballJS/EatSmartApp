@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
 using HealthyEating.Client.Models;
 using System;
@@ -16,7 +17,10 @@ namespace HealthyEating.Client.Core.Commands
         public CreateRecipeCommand(IReader reader, IWriter writer,IUserManager userManager, IRecipeManager recipeManager)
             :base(reader,writer)
         {
-            
+            Guard.WhenArgument(userManager, "userManager").IsNull().Throw();
+            Guard.WhenArgument(recipeManager, "recipeManager").IsNull().Throw();
+
+
             this.userManager = userManager;
             
             this.recipeManager = recipeManager;

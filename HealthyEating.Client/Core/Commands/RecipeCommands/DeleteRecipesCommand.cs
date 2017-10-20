@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace HealthyEating.Client.Core.Commands.RecipeCommands
         public DeleteRecipesCommand(IReader reader, IWriter writer,IRecipeManager recipeManager)
             : base(reader, writer)
         {
+            Guard.WhenArgument(recipeManager, "recipeManager").IsNull().Throw();
+
             this.recipeManager = recipeManager;
         }
         public override string Execute()

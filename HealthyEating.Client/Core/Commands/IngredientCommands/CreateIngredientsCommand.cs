@@ -1,4 +1,5 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace HealthyEating.Client.Core.Commands
         public CreateIngredientsCommand(IReader reader, IWriter writer, IIngredientManager ingredientManager)
             :base(reader,writer)
         {
+            Guard.WhenArgument(ingredientManager, "ingredientManager").IsNull().Throw();
+
             this.ingredientManager = ingredientManager;
         }
 

@@ -1,10 +1,7 @@
-﻿using HealthyEating.Client.Core.Contracts;
+﻿using Bytes2you.Validation;
+using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Managers
 {
@@ -16,6 +13,10 @@ namespace HealthyEating.Client.Managers
 
         public GoalManager(IModelFactory modelFactory, IDatabase database, IUserManager userManager)
         {
+            Guard.WhenArgument(userManager, "userManager").IsNull().Throw();
+            Guard.WhenArgument(modelFactory, "modelFactory").IsNull().Throw();
+            Guard.WhenArgument(database, "database").IsNull().Throw();
+
             this.modelFactory = modelFactory;
             this.database = database;
             this.userManager = userManager;

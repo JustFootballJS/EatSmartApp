@@ -73,8 +73,8 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             userManager.RecoverAccount(username, password, answer);
 
             //Assert
-            //Assert.AreSame(users.First(), userManager.LoggedUser);
-            //Assert.AreEqual(false, userManager.LoggedUser.IsDeleted);
+            Assert.AreSame(users.First(), userManager.LoggedUser);
+            Assert.AreEqual(false, userManager.LoggedUser.IsDeleted);
         }
 
         [TestMethod]
