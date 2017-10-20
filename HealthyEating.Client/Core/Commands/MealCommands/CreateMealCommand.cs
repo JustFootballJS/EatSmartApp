@@ -8,42 +8,38 @@ using System.Text;
 using System.Threading.Tasks;
 using HealthyEating.Client.Core.Factories;
 using HealthyEating.Client.Utils;
+using Bytes2you.Validation;
 
 namespace HealthyEating.Client.Core.Commands.MealCommands
 {
-    class CreateMealCommand
+    class CreateMealCommand : MealCommand, ICommand
     {
-        private readonly IDatabase db;
-        private readonly IModelFactory factory;
-        private readonly User user;
-
-        public CreateMealCommand(IDatabase db, IModelFactory factory, User user)
+        public CreateMealCommand(IModelFactory factory, IReader reader, IWriter writer, IUserManager userManager, IDatabase database)
+            : base(factory, reader, writer, userManager, database)
         {
-            this.db = db;
-            this.factory = factory;
-            this.user = user;
+
         }
 
-        public string Execute(IList<string> commandLine)
+        public override string Execute()
         {
-            MealCategory mealCategory = (MealCategory)Enum.Parse(typeof(MealCategory), commandLine[0], true);
-            DateTime date = Convert.ToDateTime(commandLine[1]);
-            ICollection<Recipe> recipesToAdd = null;
 
-            for (int i = 1; i < commandLine.Count; i++)
+            MealCategory mealCategory = (MealCategory)MealCategory.Parse(typeof(MealCategory), 
+                base.ReadOneLine("Breakfast/Lunch/Supper: ").ToLower());
+            DateTime mealDate = Convert.ToDateTime(base.ReadOneLine("When did you eat it? (DD/MM/YYYY): "));
+            string recipeToAdd;
+            List<Recipe> listOfRecipesToAdd = new List<Recipe>();
+
+            do
             {
-                try
-                {
-                    recipesToAdd.Add(user.Recipes.Where(rec => rec.Name == commandLine[i]).Single());
-                }
-                catch
-                {
-                    throw new ArgumentException("Failed to find recipes in user.");
-                }
+                recipeToAdd = ReadOneLine("What did you eat?: ");
+                listOfRecipesToAdd.Add(this.UserManager.LoggedUser.Recipes.SingleOrDefault(r => r.Name == recipeToAdd));
             }
+            while (recipeToAdd != "");
+            
+            Meal meal = this.Factory.CreateMeal(mealCategory, mealDate, listOfRecipesToAdd);
+            this.UserManager.LoggedUser.Meals.Add(meal);
 
-            var meal = factory.CreateMeal(mealCategory, date, recipesToAdd);
-            return $"Meal with ID {db.Meals.Count() - 1} was created!";
+            return $"Meal with Id {this.UserManager.LoggedUser.Meals.Count - 1} was created!";
         }
     }
 }

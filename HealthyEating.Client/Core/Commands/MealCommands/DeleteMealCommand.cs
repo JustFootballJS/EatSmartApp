@@ -9,32 +9,32 @@ using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core.Commands.MealCommands
 {
-    public class DeleteMealCommand : ICommand
+    public class DeleteMealCommand : MealCommand, ICommand
     {
-        private readonly IDatabase db;
-        private readonly User user;
-
-        public DeleteMealCommand(IDatabase db, User user)
+        
+        public DeleteMealCommand(IModelFactory factory, IReader reader, IWriter writer, IUserManager userManager, IDatabase database)
+            : base(factory, reader, writer, userManager, database)
         {
-            this.db = db;
-            this.user = user;
+
         }
-
-        public string Execute()
+        
+        public override string Execute()
         {
-            //try
-            //{
-            //    var idToRemove = int.Parse(commandLine[1]);
-            //    var mealToRemove = this.user.Meals.SingleOrDefault(m => m.Id == idToRemove);
-            //    mealToRemove.isDeleted = true;
+            //int mealId = int.Parse(base.ReadOneLine("Which Meal would you like to delete?"));
+            //bool mealToDelete = UserManager.LoggedUser.Meals.SingleOrDefault(m => m.Id == mealId).isDeleted = false;
+            //return $"Meal with Id {mealId} was deleted!";
 
-            //    return $"Meal with ID {idToRemove} was deleted.";
-            //}
-            //catch
-            //{
-            //    throw new ArgumentException("Enter a meal id to delete!");
-            //}
-            return null;
+            int idOfMealToDelete = int.Parse(base.ReadOneLine("Delete meal with ID: "));
+            var meal = new Meal { Id = idOfMealToDelete };
+
+            using (var ctx = new HealthyEatingContext())
+            {
+                ctx.Meals.Attach(meal);
+                ctx.Meals.Remove(meal);
+                ctx.SaveChanges();
+            }
+
+            return $"Meal with Id {idOfMealToDelete} was deleted!";
         }
     }
 }

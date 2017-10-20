@@ -9,32 +9,42 @@ using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core.Commands.MealCommands
 {
-    public class ListMealsCommand : ICommand
+    public class ListMealsCommand : MealCommand, ICommand
     {
-        private readonly IDatabase db;
-        private readonly User user;
-
-        public ListMealsCommand(IDatabase db)
+        public ListMealsCommand(IModelFactory factory, IReader reader, IWriter writer, IUserManager userManager, IDatabase database) 
+            : base(factory, reader, writer, userManager, database)
         {
-            this.db = db;
         }
 
-        public string Execute()
+        //public string Execute()
+        //{
+        //    var meals = user.Meals;
+        //    string result = null;
+
+        //    if (meals.Count == 0)
+        //    {
+        //        return "There are no created recipes.";
+        //    }
+
+        //    var mealsList = user.Meals.ToList();
+        //    foreach (Meal m in mealsList)
+        //    {
+        //        result += m.Recipes.Single().Name + ' ';
+        //    }
+        //    return result;
+        //}
+
+        public override string Execute()
         {
-            var meals = user.Meals;
-            string result = null;
-
-            if (meals.Count == 0)
+            foreach (Meal m in UserManager.LoggedUser.Meals)
             {
-                return "There are no created recipes.";
+                this.Writer.WriteLine(string.Format($"Meal Id: {0}; Meal category: {1}, Recipes: {2}, You ate it on: {3}",
+                    m.Id,
+                    m.MealCategory,
+                    m.Recipes,
+                    m.Date));
             }
-
-            var mealsList = user.Meals.ToList();
-            foreach (Meal m in mealsList)
-            {
-                result += m.Recipes.Single().Name + ' ';
-            }
-            return result;
+            return "That was your meal!";
         }
     }
 }

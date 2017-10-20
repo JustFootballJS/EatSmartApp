@@ -1,5 +1,4 @@
-﻿using Bytes2you.Validation;
-using HealthyEating.Client.Core.Contracts;
+﻿using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
 using HealthyEating.Client.Models;
 using iTextSharp.text;
@@ -20,10 +19,6 @@ namespace HealthyEating.Client.Core.Commands
 
         public LoggingCommand(IReader reader, IWriter writer, IDatabase database, IUserManager userManager) : base(reader, writer)
         {
-            Guard.WhenArgument(userManager, "userManager").IsNull().Throw();
-            Guard.WhenArgument(database, "database").IsNull().Throw();
-
-
             this.database = database;
             this.userManager = userManager;
         }
