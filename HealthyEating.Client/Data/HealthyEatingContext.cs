@@ -18,7 +18,9 @@ namespace HealthyEating.Client.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Recipe>().HasRequired(m => m.User).WithMany(m => m.Recipes).WillCascadeOnDelete(true);
+            modelBuilder.Entity<Quantity>().HasRequired(m => m.Recipe).WithMany(x => x.Quantities).WillCascadeOnDelete(true);
+            modelBuilder.Entity<Quantity>().HasRequired(m => m.Ingredient).WithMany(x => x.Quantities).WillCascadeOnDelete(true);
            
             base.OnModelCreating(modelBuilder);
 

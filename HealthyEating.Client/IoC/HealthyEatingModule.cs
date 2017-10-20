@@ -1,6 +1,8 @@
 ﻿using HealthyEating.Client.Core;
 using HealthyEating.Client.Core.Commands;
 using HealthyEating.Client.Core.Commands.GoalCommands;
+using HealthyEating.Client.Core.Commands.IngredientCommands;
+using HealthyEating.Client.Core.Commands.RecipeCommands;
 using HealthyEating.Client.Core.Commands.RecomendCommands;
 using HealthyEating.Client.Core.Commands.UserCommands;
 using HealthyEating.Client.Core.Contracts;
@@ -27,9 +29,13 @@ namespace HealthyEating.Client.IoC
             this.Bind<IUserManager>().To<UserManager>().InSingletonScope();
             this.Bind<IDatabase>().To<HealthyEatingContext>();
             this.Bind<IPasswordHasher>().To<PasswordHasher>();
-            this.Bind<IRecipeManager>().To<RecipeManager>();
+            this.Bind<IRecipeManager>().To<RecipeManager>().InSingletonScope() ;
+            this.Bind<IIngredientManager>().To<IngredientManager>().InSingletonScope();
 
+            this.Bind<ICommand>().To<DeleteIngredientCommand>().Named("deleteingredient");
+            this.Bind<ICommand>().To<CreateIngredientsCommand>().Named("createingredient");
             this.Bind<ICommand>().To<CreateRecipeCommand>().Named("createrecipe");
+            this.Bind<ICommand>().To<DeleteRecipesCommand>().Named("deleterecipe");
             this.Bind<ICommand>().To<ListRecipesCommand>().Named("listrecipes");
             this.Bind<ICommand>().To<ChangeCurrentWeightCommand>().Named("changecurrentweight");
             this.Bind<ICommand>().To<DeleteAccountCommand>().Named("deleteaccount");

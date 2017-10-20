@@ -47,7 +47,13 @@ namespace HealthyEating.Client.Managers
             this.database.SaveChanges();
             return $"Recipe {recipe.Name} was created";
         }
-
+        public string DeleteRecipe(string name)
+        {
+            var recipe = this.database.Recipes.Single(x => x.Name == name);
+            this.database.Recipes.Remove(recipe);
+            this.database.SaveChanges();
+            return "Deleted!";
+        }
         public Recipe EstimateNutritions(Recipe recipe)
         {
             recipe.KCAL = recipe.Quantities.Sum(x => x.QuantityValue * x.Ingredient.KCAL);

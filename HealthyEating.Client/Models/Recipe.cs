@@ -31,6 +31,8 @@ namespace HealthyEating.Client.Models
 
         public decimal Carbohydrate { get; set; }
 
+        public virtual User User { get; set; }
+
         public decimal Fibre { get; set; }
     }
 }

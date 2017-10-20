@@ -65,12 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Commands\IngredientCommands\CreateIngredientsCommand.cs" />
     <Compile Include="Core\Commands\GoalCommands\CreateGoalCommand.cs" />
     <Compile Include="Core\Commands\GoalCommands\DeleteGoalCommand.cs" />
+    <Compile Include="Core\Commands\IngredientCommands\DeleteIngredientCommand.cs" />
+    <Compile Include="Core\Commands\LoggingCommand.cs" />
     <Compile Include="Core\Commands\MealCommands\CreateMealCommand.cs" />
     <Compile Include="Core\Commands\MealCommands\DeleteMealCommand.cs" />
     <Compile Include="Core\Commands\MealCommands\ListMealsCommand.cs" />
     <Compile Include="Core\Commands\RecipeCommands\CreateRecipeCommand.cs" />
+    <Compile Include="Core\Commands\RecipeCommands\DeleteRecipesCommand.cs" />
     <Compile Include="Core\Commands\RecommendCommands\RecommendFullPortionsCommand.cs" />
     <Compile Include="Core\Commands\RecommendCommands\RecommendNotFullPortionsCommand.cs" />
     <Compile Include="Core\Commands\UserCommands\ChangeCurrentWeightCommand.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="Core\Contracts\ICommandParser.cs" />
     <Compile Include="Core\Contracts\ICommandProcessor.cs" />
     <Compile Include="Core\Contracts\IFoodRecomender.cs" />
+    <Compile Include="Core\Contracts\IIngredientManager.cs" />
     <Compile Include="Core\Contracts\IJsonProvider.cs" />
     <Compile Include="Core\Contracts\IModelFactory.cs" />
     <Compile Include="Core\Contracts\IPasswordHasher.cs" />
@@ -107,6 +112,7 @@
     <Compile Include="Core\Commands\UserCommands\DeleteAccountCommand.cs" />
     <Compile Include="IoC\HealthyEatingModule.cs" />
     <Compile Include="Core\Commands\UserCommands\LogInCommand.cs" />
+    <Compile Include="Managers\IngredientManager.cs" />
     <Compile Include="Managers\RecipeManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Migrations\201710192055386_initial.cs" />
@@ -124,6 +130,10 @@
     <Compile Include="Migrations\201710192254470_seedss.cs" />
     <Compile Include="Migrations\201710192254470_seedss.Designer.cs">
       <DependentUpon>201710192254470_seedss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710200030308_deletion.cs" />
+    <Compile Include="Migrations\201710200030308_deletion.Designer.cs">
+      <DependentUpon>201710200030308_deletion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Goal.cs" />
@@ -155,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710192254470_seedss.resx">
       <DependentUpon>201710192254470_seedss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710200030308_deletion.resx">
+      <DependentUpon>201710200030308_deletion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core.Contracts
 {
-    public interface IRecipeManager
+    public interface IIngredientManager
     {
-        string CreateRecipe(string name, string quanitites, string ingredients);
+        string Create(string name, string kcal, string protein, string fat, string fibre, string carbs);
 
-        string DeleteRecipe(string name);
+        string Delete(string name);
     }
 }
