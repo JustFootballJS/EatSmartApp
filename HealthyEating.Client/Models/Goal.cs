@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Models
 {
@@ -18,8 +13,12 @@ namespace HealthyEating.Client.Models
        [Key,ForeignKey("User")]
         public int UserId { get; set; }
         
+        [Required]
+        [Range(0,int.MaxValue,ErrorMessage =("Max kcal must be between 0 and 2 billion"))]
         public int MaxKcal { get; set; }
 
+        [Required]
+        [Range(0, int.MaxValue, ErrorMessage = ("Wanted weight must be between 0 and 2 billion"))]
         public int WantedWeight { get; set; }
 
         public bool isDeleted { get; set; }

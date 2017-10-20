@@ -1,10 +1,7 @@
 ﻿using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Managers
 {
@@ -29,7 +26,11 @@ namespace HealthyEating.Client.Managers
 
         public string Delete(string name)
         {
-           var ingredient= this.database.Ingredients.Single(x => x.Name == name);
+           var ingredient= this.database.Ingredients.SingleOrDefault(x => x.Name == name);
+            if (ingredient == null)
+            {
+                throw new ArgumentException("Name is invalid");
+            }
             this.database.Ingredients.Remove(ingredient);
             this.database.SaveChanges();
 

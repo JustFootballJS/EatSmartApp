@@ -4,8 +4,6 @@ using HealthyEating.Client.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Managers
 {
@@ -41,15 +39,24 @@ namespace HealthyEating.Client.Managers
             }
 
            var recipe= EstimateNutritions(this.modelFactory.CreateRecipe(name, quantityObjects));
+            var user = this.database.Users.SingleOrDefault(x => x.Id == this.userManager.LoggedUser.Id);
+            if (user == null)
+            {
+                throw new ArgumentException("Please log in");
+            }
+            user.Recipes.Add(recipe);
 
             this.userManager.LoggedUser.Recipes.Add(recipe);
-            this.database.Users.Single(x => x.Id == this.userManager.LoggedUser.Id).Recipes.Add(recipe);
             this.database.SaveChanges();
             return $"Recipe {recipe.Name} was created";
         }
         public string DeleteRecipe(string name)
         {
-            var recipe = this.database.Recipes.Single(x => x.Name == name);
+            var recipe = this.database.Recipes.SingleOrDefault(x => x.Name == name);
+            if (recipe == null)
+            {
+                throw new ArgumentException("Recipe name is invalid");
+            }
             this.database.Recipes.Remove(recipe);
             this.database.SaveChanges();
             return "Deleted!";

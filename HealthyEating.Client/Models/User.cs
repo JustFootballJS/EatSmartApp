@@ -23,6 +23,7 @@ namespace HealthyEating.Client.Models
 
         public virtual ICollection<Recipe> Recipes { get; set; }
 
+        [Range(0,1000,ErrorMessage ="weight must be between 0 and 1000")]
         public double CurrentWeight { get; set; }
 
         public virtual Goal Goal { get; set; }

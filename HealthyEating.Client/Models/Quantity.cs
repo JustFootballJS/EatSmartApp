@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace HealthyEating.Client.Models
 {
@@ -13,6 +9,8 @@ namespace HealthyEating.Client.Models
         public int? RecipeId { get; set; }
         public Ingredient Ingredient { get; set; }
         public Recipe Recipe { get; set; }
+        [Required]
+        [Range(0,1000000,ErrorMessage ="Quantity must be between 0 and 1mil")]
         public decimal QuantityValue { get; set; }
     }
 }

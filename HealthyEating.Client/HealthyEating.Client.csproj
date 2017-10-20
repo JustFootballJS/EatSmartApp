@@ -135,6 +135,10 @@
     <Compile Include="Migrations\201710200030308_deletion.Designer.cs">
       <DependentUpon>201710200030308_deletion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710200054555_moreattrs.cs" />
+    <Compile Include="Migrations\201710200054555_moreattrs.Designer.cs">
+      <DependentUpon>201710200054555_moreattrs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\Ingredient.cs" />
@@ -168,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710200030308_deletion.resx">
       <DependentUpon>201710200030308_deletion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710200054555_moreattrs.resx">
+      <DependentUpon>201710200054555_moreattrs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
