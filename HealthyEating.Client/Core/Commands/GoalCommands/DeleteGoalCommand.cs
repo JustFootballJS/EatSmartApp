@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core.Commands.GoalCommands
 {
-    public class DeleteGoalCommand : ICommand
+    public class DeleteGoalCommand //: Command,ICommand
     {
         private readonly IDatabase db;
-        private readonly User user;
+        
 
-        public DeleteGoalCommand(IDatabase db, User user)
+        public DeleteGoalCommand(IReader reader, IWriter writer,IDatabase db)
+            //:base( reader, writer)
         {
-            this.db = db;
-            this.user = user;
+            //this.db = db;
+            //this.user = user;
         }
 
         public string Execute()

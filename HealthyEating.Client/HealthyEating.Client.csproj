@@ -87,6 +87,7 @@
     <Compile Include="Core\Contracts\ICommandParser.cs" />
     <Compile Include="Core\Contracts\ICommandProcessor.cs" />
     <Compile Include="Core\Contracts\IFoodRecomender.cs" />
+    <Compile Include="Core\Contracts\IGoalManager.cs" />
     <Compile Include="Core\Contracts\IIngredientManager.cs" />
     <Compile Include="Core\Contracts\IJsonProvider.cs" />
     <Compile Include="Core\Contracts\IModelFactory.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Core\Commands\UserCommands\DeleteAccountCommand.cs" />
     <Compile Include="IoC\HealthyEatingModule.cs" />
     <Compile Include="Core\Commands\UserCommands\LogInCommand.cs" />
+    <Compile Include="Managers\GoalManager.cs" />
     <Compile Include="Managers\IngredientManager.cs" />
     <Compile Include="Managers\RecipeManager.cs" />
     <Compile Include="Managers\UserManager.cs" />

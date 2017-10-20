@@ -9,43 +9,35 @@ using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core.Commands.GoalCommands
 {
-    public class CreateGoalCommand : ICommand
+    public class CreateGoalCommand : Command,ICommand
     {
         private readonly IDatabase db;
         private readonly IModelFactory factory;
-        private readonly IUserManager userManager;
+   
+        private readonly IGoalManager goalManager;
 
-        public CreateGoalCommand(IDatabase db, IModelFactory factory, IUserManager userManager)
+        public CreateGoalCommand(IReader reader, IWriter writer,IDatabase db, IModelFactory factory, IGoalManager goalManager)
+            :base(reader,writer)
         {
             this.db = db;
             this.factory = factory;
-            this.userManager = userManager;
+            
+            this.goalManager = goalManager;
         }
 
-        public string Execute()
+        public override string Execute()
         {
-            //this.userManager.LoggedUser.Username = "abvc";
-            //this.db.Users.Single(x => x.Id == this.userManager.LoggedUser.Id).Username = "abvc";
-            //this.db.SaveChanges();
-            //Console.WriteLine(this.db.Users.Single(x => x.Id == this.userManager.LoggedUser.Id).Username);
-            // Console.WriteLine();
-            //try
-            //{
-            //    int maxKcal = int.Parse(commandLine[0]);
-            //    int maxWeight = int.Parse(commandLine[1]);
-            //    var Goal = factory.CreateGoal(maxKcal, maxWeight);
+            var parameters = TakeInput();
+            var maxkcal = parameters[0];
+            var wantedWeight = parameters[1];
 
-            //}
-            //catch
-            //{
-            //    throw new ArgumentException("Goal could not be created!");
-            //}
-
-            //return $"Meal with ID {user.Goals.Count - 1} was created!";
-            this.userManager.LoggedUser.Goal = new Goal() { WantedWeight = 20 };
-            this.db.Users.Single(x => x.Id == this.userManager.LoggedUser.Id).Goal = new Goal() { WantedWeight = 10 };
-            this.db.SaveChanges();
-            return null;
+            return this.goalManager.Create(maxkcal, wantedWeight);
+        }
+        private IList<string> TakeInput()
+        {
+            var maxkcal = base.ReadOneLine("Max Kcal: ");
+            var wantedweight = base.ReadOneLine("Wanted weight: ");
+            return new List<string>() { maxkcal, wantedweight };
         }
     }
 }

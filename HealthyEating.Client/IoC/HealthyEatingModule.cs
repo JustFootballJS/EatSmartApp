@@ -31,6 +31,9 @@ namespace HealthyEating.Client.IoC
             this.Bind<IPasswordHasher>().To<PasswordHasher>();
             this.Bind<IRecipeManager>().To<RecipeManager>().InSingletonScope() ;
             this.Bind<IIngredientManager>().To<IngredientManager>().InSingletonScope();
+            this.Bind<IGoalManager>().To<GoalManager>().InSingletonScope();
+
+
 
             this.Bind<ICommand>().To<DeleteIngredientCommand>().Named("deleteingredient");
             this.Bind<ICommand>().To<CreateIngredientsCommand>().Named("createingredient");
