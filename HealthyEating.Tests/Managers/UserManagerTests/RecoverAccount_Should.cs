@@ -21,7 +21,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
             var username = "validUsername";
             var password = "validPassword";
             var answer = "yes";
@@ -51,7 +53,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
             var username = "validUsername";
             var password = "validPassword";
             var answer = "yes";
@@ -83,7 +87,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
             var username = "validUsername";
             var password = "validPassword";
             var answer = "no";
@@ -111,7 +117,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
             var username = "validUsername";
             var password = "validPassword";
             var answer = "yes";
@@ -140,7 +148,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
            
             var password = "password";
             var answer = "yes";

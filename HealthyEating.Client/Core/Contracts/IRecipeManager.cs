@@ -11,5 +11,7 @@ namespace HealthyEating.Client.Core.Contracts
         string CreateRecipe(string name, string quanitites, string ingredients);
 
         string DeleteRecipe(string name);
+
+        string RecipeAsString(string name);
     }
 }

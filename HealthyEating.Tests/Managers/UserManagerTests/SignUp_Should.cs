@@ -17,7 +17,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
             var password = "somelegitpassword";
             string username = null;
             //Act & Assert
@@ -33,7 +35,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
             var password = "somelegitpassword";
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(() => userManager.LogIn(username, password));
@@ -46,7 +50,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
             string password = null;
             string username = "somelegitusername";
             //Act & Assert
@@ -62,7 +68,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
+            var recipeManagerMock = new Mock<IRecipeManager>();
+
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
             var username = "somelegitusername";
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(() => userManager.LogIn(username, password));
