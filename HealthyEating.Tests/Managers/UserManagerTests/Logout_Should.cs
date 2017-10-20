@@ -18,9 +18,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var recipeManagerMock = new Mock<IRecipeManager>();
+           
 
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
 
             userManager.LoggedUser = new User();
 
@@ -38,9 +38,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var recipeManagerMock = new Mock<IRecipeManager>();
+           
 
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
             var expected = "Log out successful";
             userManager.LoggedUser = new User();
             //Act
@@ -57,9 +57,9 @@ namespace HealthyEating.Tests.Managers.UserManagerTests
             var databaseMock = new Mock<IDatabase>();
             var passwordHasherMock = new Mock<IPasswordHasher>();
             var modelFactoryMock = new Mock<IModelFactory>();
-            var recipeManagerMock = new Mock<IRecipeManager>();
+         
 
-            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object,recipeManagerMock.Object);
+            var userManager = new UserManager(passwordHasherMock.Object, databaseMock.Object, modelFactoryMock.Object);
 
             //Act & Assert
             Assert.ThrowsException<ArgumentException>(() => userManager.Logout());

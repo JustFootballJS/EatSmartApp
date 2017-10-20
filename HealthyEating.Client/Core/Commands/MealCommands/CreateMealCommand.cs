@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using HealthyEating.Client.Core.Factories;
 using HealthyEating.Client.Utils;
 using Bytes2you.Validation;
+using System.ComponentModel.Design;
 
 namespace HealthyEating.Client.Core.Commands.MealCommands
 {

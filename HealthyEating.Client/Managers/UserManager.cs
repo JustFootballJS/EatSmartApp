@@ -12,20 +12,19 @@ namespace HealthyEating.Client.Managers
         private readonly IPasswordHasher passwordHasher;
         private readonly IDatabase database;
         private readonly IModelFactory modelFactory;
-        private readonly IRecipeManager recipeManager; 
+       
 
-        public UserManager(IPasswordHasher passwordHasher, IDatabase database, IModelFactory modelFactory,IRecipeManager recipeManager)
+        public UserManager(IPasswordHasher passwordHasher, IDatabase database, IModelFactory modelFactory)
         {
             Guard.WhenArgument(passwordHasher, "passwordHasher").IsNull().Throw();
             Guard.WhenArgument(database, "database").IsNull().Throw();
             Guard.WhenArgument(modelFactory, "modelFactory").IsNull().Throw();
-            Guard.WhenArgument(recipeManager, "recipeManager").IsNull().Throw();
-
+            
 
             this.passwordHasher = passwordHasher;
             this.database = database;
             this.modelFactory = modelFactory;
-            this.recipeManager = recipeManager;
+            
 
         }
 
@@ -158,7 +157,7 @@ namespace HealthyEating.Client.Managers
                 Environment.NewLine,
                 $"Recipes: ",
                 Environment.NewLine,
-                string.Join(Environment.NewLine, user.Recipes.Select(x=>this.recipeManager.RecipeAsString(x.Name))),
+                string.Join(Environment.NewLine, user.Recipes.Select(x=>x.Name)),
                 Environment.NewLine,
                 $"Meal History: ",
                 Environment.NewLine,

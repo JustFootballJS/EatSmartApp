@@ -73,6 +73,7 @@
     <Compile Include="Core\Commands\MealCommands\CreateMealCommand.cs" />
     <Compile Include="Core\Commands\MealCommands\DeleteMealCommand.cs" />
     <Compile Include="Core\Commands\MealCommands\ListMealsCommand.cs" />
+    <Compile Include="Core\Commands\MealCommands\MealCommand.cs" />
     <Compile Include="Core\Commands\RecipeCommands\CreateRecipeCommand.cs" />
     <Compile Include="Core\Commands\RecipeCommands\DeleteRecipesCommand.cs" />
     <Compile Include="Core\Commands\RecommendCommands\RecommendFullPortionsCommand.cs" />
