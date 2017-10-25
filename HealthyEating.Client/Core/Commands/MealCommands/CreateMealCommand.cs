@@ -13,12 +13,18 @@ using System.ComponentModel.Design;
 
 namespace HealthyEating.Client.Core.Commands.MealCommands
 {
-    class CreateMealCommand : MealCommand, ICommand
+    class CreateMealCommand : Command, ICommand
     {
-        public CreateMealCommand(IModelFactory factory, IReader reader, IWriter writer, IUserManager userManager, IDatabase database)
-            : base(factory, reader, writer, userManager, database)
-        {
+        private readonly IDatabase db;
+        private readonly IUserManager userManager;
+        private readonly IModelFactory factory;
 
+        public CreateMealCommand(IModelFactory factory, IReader reader, IWriter writer, IUserManager userManager, IDatabase database)
+            : base( reader, writer)
+        {
+            this.db = database;
+            this.userManager = userManager;
+            this.factory = factory;
         }
 
         public override string Execute()
@@ -32,17 +38,18 @@ namespace HealthyEating.Client.Core.Commands.MealCommands
 
             do
             {
-                listOfRecipesToAdd.Add(this.UserManager.LoggedUser.Recipes.SingleOrDefault(r => r.Name == recipeToAdd));
+                listOfRecipesToAdd.Add(this.db.Recipes.SingleOrDefault(r => r.Name == recipeToAdd&&r.User.Id==this.userManager.LoggedUser.Id));
                 recipeToAdd = ReadOneLine("What did you eat?: ");
-
             }
             while (recipeToAdd != "");
             
-            Meal meal = this.Factory.CreateMeal(mealCategory, mealDate, listOfRecipesToAdd);
-           // this.UserManager.LoggedUser.Meals.Add(meal);
-            this.Database.Meals.Add(meal);
-            this.Database.SaveChanges();
-            return $"Meal with Id {this.UserManager.LoggedUser.Meals.Count - 1} was created!";
+            Meal meal = this.factory.CreateMeal(mealCategory, mealDate, listOfRecipesToAdd);    
+            var user = this.db.Users.Single(x => x.Id == this.userManager.LoggedUser.Id);
+            meal.User = user;
+            this.db.Meals.Add(meal);
+            this.db.SaveChanges();
+           
+            return $"Meal with with {string.Join(",",meal.Recipes.Select(x=>x.Name).ToArray())} was created!";
         }
     }
 }

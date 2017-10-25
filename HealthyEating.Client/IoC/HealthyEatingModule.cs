@@ -55,7 +55,9 @@ namespace HealthyEating.Client.IoC
             this.Bind<ICommand>().To<DeleteMealCommand>().Named("deletemeal");
             this.Bind<ICommand>().To<ListMealsCommand>().Named("listmeals");
             this.Bind<ICommand>().To<UpdateMealCommand>().Named("updatemeal");
-            
+            this.Bind<ICommand>().To<LoggingCommand>().Named("logg");
+            this.Bind<ICommand>().To<DeleteGoalCommand>().Named("deletegoal");
+
 
 
 

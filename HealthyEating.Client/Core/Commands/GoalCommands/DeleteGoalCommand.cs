@@ -9,32 +9,26 @@ using System.Threading.Tasks;
 
 namespace HealthyEating.Client.Core.Commands.GoalCommands
 {
-    public class DeleteGoalCommand //: Command,ICommand
+    public class DeleteGoalCommand : Command,ICommand
     {
         private readonly IDatabase db;
-        
+        private readonly IUserManager userManager;
 
-        public DeleteGoalCommand(IReader reader, IWriter writer,IDatabase db)
-            //:base( reader, writer)
+        public DeleteGoalCommand(IReader reader, IWriter writer,IDatabase db,IUserManager userManager)
+            :base( reader, writer)
         {
-            //this.db = db;
-            //this.user = user;
+            this.db = db;
+            this.userManager = userManager;
+           
         }
 
-        public string Execute()
+
+        public override string Execute()
         {
-            //try
-            //{
-            //    int idToRemove = int.Parse(commandLine[0]);
-            //    Goal goalToRemove = this.user.Goals.SingleOrDefault(g => g.Id == idToRemove);
-            //    goalToRemove.isDeleted = true;
-            //    return $"Goal with ID {goalToRemove.Id} is deleted!";
-            //}
-            //catch
-            //{
-            //    throw new ArgumentException("Enter a goal id to delete!");
-            //}
-            return null;
+            var user = this.db.Users.Single(x => x.Id == this.userManager.LoggedUser.Id);
+            this.db.Goals.Remove(user.Goal);
+            this.db.SaveChanges();
+            return " Your goal has been successfully deleted!";
         }
     }
 }

@@ -26,7 +26,7 @@ namespace HealthyEating.Client.Core.Commands.RecomendCommands
 
             var answer= this.foodRecomender.RecommendFullPortions(maxCalories, nutrition);
 
-            return string.Join(Environment.NewLine, answer.Select(x => x.Name));
+            return string.Join(Environment.NewLine, answer.Select(x => $"{x.Name} {x.KCAL} {x.Protein}{Environment.NewLine}{x.Carbohydrate} {x.Fat} {x.Fibre}"));
         }
 
         private IList<string> TakeInput()

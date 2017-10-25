@@ -1,6 +1,7 @@
 ﻿using Bytes2you.Validation;
 using HealthyEating.Client.Core.Contracts;
 using HealthyEating.Client.Data;
+using System;
 using System.Linq;
 
 namespace HealthyEating.Client.Managers
@@ -23,10 +24,15 @@ namespace HealthyEating.Client.Managers
         }
         public string Create(string maxKcal, string wantedWeight)
         {
-            var goal = this.modelFactory.CreateGoal(int.Parse(maxKcal), int.Parse(wantedWeight));
             var user = this.database.Users.Single(x => x.Id == this.userManager.LoggedUser.Id);
-            this.userManager.LoggedUser.Goal = goal;
-            user.Goal = goal;
+            if (user.Goal != null)
+            {
+                throw new ArgumentException("This user already has a goal");
+            }
+            var goal = this.modelFactory.CreateGoal(int.Parse(maxKcal), int.Parse(wantedWeight));
+
+            goal.User = user;
+            this.database.Goals.Add(goal);
             this.database.SaveChanges();
             return "Created goal";
         }

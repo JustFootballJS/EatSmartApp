@@ -49,9 +49,8 @@ namespace HealthyEating.Client.Managers
             {
                 throw new ArgumentException("Please log in");
             }
-            user.Recipes.Add(recipe);
-
-            this.userManager.LoggedUser.Recipes.Add(recipe);
+            recipe.User = user;
+            this.database.Recipes.Add(recipe);
             this.database.SaveChanges();
             return $"Recipe {recipe.Name} was created";
         }
